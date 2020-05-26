@@ -23,7 +23,16 @@ pickle-email-*.html
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
-/db/*.sqlite3-*
+/db/*.sqlite3-[0-9]*
+*.rbc
+capybara-*.html
+.rspec
+/public/system
+/coverage/
+/spec/tmp
+*.orig
+rerun.txt
+pickle-email-*.html
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -71,6 +80,11 @@ node_modules/
 /public/packs-test
 /public/assets
 
+<<<<<<< HEAD
+=======
+.byebug_history
+
+>>>>>>> Initial commit
 # Ignore yarn files
 /yarn-error.log
 yarn-debug.log*
