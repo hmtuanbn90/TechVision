@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_073056) do
+ActiveRecord::Schema.define(version: 2020_05_29_071219) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 2020_05_27_073056) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "magazines", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -47,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_05_27_073056) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.text "tittle"
+    t.text "title"
     t.text "content"
     t.text "about"
     t.text "imager"
@@ -56,7 +63,7 @@ ActiveRecord::Schema.define(version: 2020_05_27_073056) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_reviews_on_user_id"
+    t.index ["user_id", "created_at"], name: "index_reviews_on_user_id_and_created_at"
   end
 
   create_table "topics", force: :cascade do |t|

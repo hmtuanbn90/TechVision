@@ -7,6 +7,7 @@ class StaticPagesController < ApplicationController
      @RecentPosts3 =Review.limit(6).offset(7)
      @MostReades = Review.order("view desc").limit(4)
      @topicNumbers = Topic.all
+     @review = 1
   end
   def search
     if params[:search].blank?
