@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
 
 	before_action :find_topic, only: :create
 
-	
+
 	def index
 		@reviews = Review.order("created_at DESC")
   	end
@@ -72,7 +72,6 @@ class ReviewsController < ApplicationController
 	end
 
 	def find_topic
-		@topic = Topic.find_by id: review_params[:topic_id] 
+		@topic = Topic.find_by id: review_params[:topic_id]
 	end
-
 end

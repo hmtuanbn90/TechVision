@@ -1,0 +1,8 @@
+<div>
+  <%= form_for [@review, @comment ], :remote => true do |f| %>
+    <%= f.text_area :content, placeholder: "Comment here." %>
+    <%= f.hidden_field :review_id, :value => @review.id %>
+    <%= f.submit "Send" %>
+  <% end %>
+</div>
+

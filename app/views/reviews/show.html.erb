@@ -1,3 +1,4 @@
+
 <div id="post-header" class="page-header">
 				<div class="background-img" style="background-image: url('/assets/post-page.jpg');"></div>
 				<div class="container">
@@ -62,6 +63,13 @@
 
 <div id="comments">
   <div>
+   <h2><%= @review.title %><h2>
+  </div>
+  <div>
+    <%= @review.content %>
+  </div>
+  <div>
   <%= render "comments/comments" %>
   </div>
+
 
