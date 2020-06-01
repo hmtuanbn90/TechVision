@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
 
   def home
+
      @review_new = Review.order("created_at desc").limit(2)
      @RecentPosts1 =Review.last(6)
      @RecentPosts2 =Review.limit(1).offset(6)
@@ -17,15 +18,3 @@ class StaticPagesController < ApplicationController
         @results = Review.all.where("lower(tittle) LIKE :search", search: "%#{@parameter}%").paginate(:page => params[:page], :per_page => 10)
 
     end
-  end
-
-  def help
-  end
-
-  def about
-  end
-
-  def contact
-  end
-
-end
