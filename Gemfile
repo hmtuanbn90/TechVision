@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'rails', '6.0.0'
 # gem 'pg_search'
+gem 'carrierwave'
 gem 'ckeditor'
 gem 'mini_magick', '4.9.5'
 gem 'image_processing','1.9.3'

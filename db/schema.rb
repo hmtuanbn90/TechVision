@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_29_071219) do
+ActiveRecord::Schema.define(version: 2020_05_29_081053) do
+
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.string "type", limit: 30
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -54,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_05_29_071219) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.text "title"
+    t.string "title"
     t.text "content"
     t.text "about"
     t.text "imager"
@@ -63,7 +73,11 @@ ActiveRecord::Schema.define(version: 2020_05_29_071219) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+<<<<<<< HEAD
     t.index ["user_id", "created_at"], name: "index_reviews_on_user_id_and_created_at"
+=======
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+>>>>>>> CRUD
   end
 
   create_table "topics", force: :cascade do |t|
