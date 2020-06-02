@@ -3,10 +3,12 @@ class ReviewsController < ApplicationController
 	
 	def index
     	@reviews = Review.order("created_at DESC")
+    	
   	end
 
 	def new
 		@review = Review.new
+		@topic = Topic.all
 	end
 
 	def create
@@ -39,6 +41,9 @@ class ReviewsController < ApplicationController
 
 	def show
 		@review = Review.find(params[:id])
+		if !@review.appended
+			redirect_to root_url
+		end	
 	end
 
 	def edit

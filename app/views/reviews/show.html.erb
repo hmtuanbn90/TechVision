@@ -1,11 +1,97 @@
+<div id="post-header" class="page-header">
+				<div class="background-img" style="background-image: url('./img/post-page.jpg');"></div>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-10">
+							<div class="post-meta">
+								<a class="post-category cat-2" href="category.html">Apple</a>
+								<span class="post-date"><%= @review.created_at %></span>
+							</div>
+							<h1><%= @review.title.html_safe %></h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- /Header -->
 
-<%= link_to "New Review", new_review_path %>
-<h3><%= @review.title.html_safe %></h3>
-<p><%= @review.content.html_safe %></p>
-<%= link_to "Edit Review", edit_review_path(@review) %>
-<hr />
+		<!-- section -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<!-- Post content -->
+					<div class="col-md-8">
+						<div class="section-row sticky-container">
+							<div class="main-post">
+								<figure class="figure-img">
+									<%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "img-responsive", alt: "blog-post.html"),"#"%>
+								</figure>
+								
+								<%= @review.content.html_safe %>
 
-<%= link_to "Delete", @review, method: :delete, data: { confirm: "You sure?"
-} %>
+						<!-- /author -->
+						
+						<div>
+							<%= link_to "New Review", new_review_path, class: "btn btn-primary" %><br>
+							<%= link_to "Edit Review", edit_review_path(@review), class: "btn btn-primary" %><br>
+							<%= link_to "Delete", @review, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %><br>
+						</div>
 
+						<!-- comments -->
+						<div class="section-row">
+							<div class="section-title">
+								<h2>3 Comments</h2>
+							</div>
+
+							<div class="post-comments">
+								<!-- comment -->
+								<div class="media">
+									<div class="media-left">
+										<img class="media-object" src="./img/avatar.png" alt="">
+									</div>
+									<div class="media-body">
+										<div class="media-heading">
+											<h4>John Doe</h4>
+											<span class="time">March 27, 2018 at 8:00 am</span>
+											<a href="#" class="reply">Reply</a>
+										</div>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+										<!-- comment -->
+										<div class="media">
+											<div class="media-left">
+												<img class="media-object" src="./img/avatar.png" alt="">
+											</div>
+											<div class="media-body">
+												<div class="media-heading">
+													<h4>John Doe</h4>
+													<span class="time">March 27, 2018 at 8:00 am</span>
+													<a href="#" class="reply">Reply</a>
+												</div>
+												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+											</div>
+										</div>
+										<!-- /comment -->
+									</div>
+								</div>
+								<!-- /comment -->
+
+								<!-- comment -->
+								<div class="media">
+									<div class="media-left">
+										<img class="media-object" src="./img/avatar.png" alt="">
+									</div>
+									<div class="media-body">
+										<div class="media-heading">
+											<h4>John Doe</h4>
+											<span class="time">March 27, 2018 at 8:00 am</span>
+											<a href="#" class="reply">Reply</a>
+										</div>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+									</div>
+								</div>
+								<!-- /comment -->
+							</div>
+						</div>
  

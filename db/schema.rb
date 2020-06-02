@@ -67,10 +67,15 @@ ActiveRecord::Schema.define(version: 2020_05_29_081053) do
     t.string "title"
     t.text "content"
     t.text "about"
+<<<<<<< HEAD
     t.text "imager"
     t.integer "view"
     t.boolean "hot"
     t.integer "user_id", null: false
+=======
+    t.boolean "appended"
+    t.integer "user_id"
+>>>>>>> review-test-1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
 <<<<<<< HEAD
