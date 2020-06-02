@@ -13,7 +13,7 @@ resources :reviews
 =======
 
   resources :reviews do
-    resources :comments
+    resources :comments, only:[:create, :destroy]
   end
 >>>>>>> nho Duong fix loi ko hien thi bai comment
 end
