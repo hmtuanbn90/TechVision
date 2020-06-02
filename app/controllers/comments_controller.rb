@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
 
-
     def create
       @comment = User.find_by(params[:id]).comments.build(comment_params)
       respond_to do |format|
