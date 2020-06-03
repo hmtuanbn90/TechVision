@@ -9,21 +9,14 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 import "bootstrap"
-<<<<<<< HEAD
 // import 'js-autocomplete/auto-complete.css';
 // import autocomplete from 'js-autocomplete';
-=======
-
-<<<<<<< HEAD
 //= require jquery
 //= require jquery_ujs
 //= require ckeditor/init
 //= require turbolinks
 //= require_tree
->>>>>>> CRUD
 
-=======
->>>>>>> review-test-1
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
