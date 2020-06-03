@@ -9,7 +9,8 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 import "bootstrap"
-
+// import 'js-autocomplete/auto-complete.css';
+// import autocomplete from 'js-autocomplete';
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -95,6 +96,12 @@ import "bootstrap"
       }
     }
   }
+$('#myInput').keypress(function(event){
+  var keycode = (event.keyCode ? event.keyCode : event.which);
+  if (keycode == '13') {
+    alert('Bạn vừa nhấn phím "enter" trong thẻ input');
+  }
+});
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
@@ -116,3 +123,27 @@ $(document).ready(function(){
   setStickyPos();
 
 })(jQuery);
+// js search
+
+
+// const autocompleteSearch = function() {
+//   const skills = JSON.parse(document.getElementById('search-data').dataset.skills)
+//   const searchInput = document.getElementById('q');
+
+//   if (skills && searchInput) {
+//     new autocomplete({
+//       selector: searchInput,
+//       minChars: 1,
+//       source: function(term, suggest){
+//           term = term.toLowerCase();
+//           const choices = skills;
+//           const matches = [];
+//           for (let i = 0; i < choices.length; i++)
+//               if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+//           suggest(matches);
+//       },
+//     });
+//   }
+// };
+
+// export { autocompleteSearch };

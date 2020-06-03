@@ -20,8 +20,12 @@ ActiveRecord::Schema.define(version: 2020_05_27_073056) do
 
   create_table "hastags", force: :cascade do |t|
     t.string "name"
+    t.integer "review_id", null: false
+    t.integer "topic_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["review_id"], name: "index_hastags_on_review_id"
+    t.index ["topic_id"], name: "index_hastags_on_topic_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -46,8 +50,13 @@ ActiveRecord::Schema.define(version: 2020_05_27_073056) do
     t.text "tittle"
     t.text "content"
     t.text "about"
+    t.text "imager"
+    t.integer "view"
+    t.boolean "hot"
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "topics", force: :cascade do |t|
@@ -66,4 +75,7 @@ ActiveRecord::Schema.define(version: 2020_05_27_073056) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "hastags", "reviews"
+  add_foreign_key "hastags", "topics"
+  add_foreign_key "reviews", "users"
 end
