@@ -43,7 +43,7 @@ class ReviewsController < ApplicationController
 		@review = Review.find(params[:id])
 		if !@review.appended
 			redirect_to root_url
-		end	
+		end
 	end
 
 	def edit
