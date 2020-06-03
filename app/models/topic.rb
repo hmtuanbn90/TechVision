@@ -1,4 +1,4 @@
 class Topic < ApplicationRecord
-  has_many :hastags, dependent: :destroy
-  has_many :reviews
+
+  has_many :reviews, dependent: :destroy
 end

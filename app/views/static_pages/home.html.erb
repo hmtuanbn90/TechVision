@@ -11,8 +11,7 @@
                   <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html"),review_path(@review) %>
                   <div class="post-body">
                     <div class="post-meta">
-                      <% byebug %>
-                      <a class="post-category cat-2" href="#"><%=review_news.topic.first.name%></a>
+                      <a class="post-category cat-2" href="#"><%=review_news.topic.name%></a>
                       <span class="post-date"><%=review_news.created_at%></span>
                     </div>
                     <h3 class="post-title"><a href="#"><%=review_news.title%></h3>
