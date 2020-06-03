@@ -12,10 +12,10 @@
                   <div class="post-body">
                     <div class="post-meta">
                       <% byebug %>
-                      <a class="post-category cat-2" href="#"><%=review_news.topic.first.name%></a>   
+                      <a class="post-category cat-2" href="#"><%=review_news.topic.first.name%></a>
                       <span class="post-date"><%=review_news.created_at%></span>
                     </div>
-                    <h3 class="post-title"><a href="#"><%=review_news.tittle%></h3>
+                    <h3 class="post-title"><a href="#"><%=review_news.title%></h3>
                   </div>
                 </div>
               </div>
@@ -43,10 +43,10 @@
                   <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html") ,"#"%>
                   <div class="post-body">
                     <div class="post-meta">
-                      <a class="post-category cat-1" href="#"><%=recentPost1.topic.first.name%></a>
+                      <a class="post-category cat-1" href="#"><%=recentPost1.topic.name%></a>
                       <span class="post-date"><%= recentPost1.created_at%></span>
                     </div>
-                    <h3 class="post-title"><a href="#"><%=recentPost1.tittle%></a></h3>
+                    <h3 class="post-title"><a href="#"><%=recentPost1.title%></a></h3>
                   </div>
                 </div>
               </div>
@@ -68,10 +68,10 @@
                       <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html") ,"#"%>
                       <div class="post-body">
                         <div class="post-meta">
-                          <a class="post-category cat-3" href="#"><%=recentPost2.topic.first.name%></a>
+                          <a class="post-category cat-3" href="#"><%=recentPost2.topic.name%></a>
                           <span class="post-date"><%= recentPost2.created_at%></span>
                         </div>
-                        <h3 class="post-title"><a href="#"><%=recentPost2.tittle%></a></h3>
+                        <h3 class="post-title"><a href="#"><%=recentPost2.title%></a></h3>
                       </div>
                     </div>
                   </div>
@@ -92,7 +92,7 @@
                           <a class="post-category cat-4" href="#">Css</a>
                           <span class="post-date"><%= recentPost3.created_at%></span>
                         </div>
-                        <h3 class="post-title"><a href="#"><%=recentPost3.tittle%></a></h3>
+                        <h3 class="post-title"><a href="#"><%=recentPost3.title%></a></h3>
                       </div>
                     </div>
                   </div>
@@ -113,7 +113,7 @@
                   <div class="post post-widget">
                     <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html") ,"#"%>
                     <div class="post-body">
-                      <h3 class="post-title"><a href="blog-post.html"><%= mostread.tittle%></a></h3>
+                      <h3 class="post-title"><a href="blog-post.html"><%= mostread.title%></a></h3>
                     </div>
                   </div>
                 <%end%>
@@ -330,7 +330,7 @@
                 <ul>
                   <% if ! @topicNumbers.empty? %>
                     <%  @topicNumbers.each do | topicNumber| %>
-                    <li><a href="#" class="cat-<%=topicNumber.id%>"><%= topicNumber.name%><span><%= topicNumber.review.size%></span></a></li>
+                    <li><a href="#" class="cat-<%=topicNumber.id%>"><%= topicNumber.name%><span><%= topicNumber.reviews.size%></span></a></li>
                     <%end%>
                   <%end%>
                 </ul>

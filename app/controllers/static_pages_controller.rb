@@ -15,7 +15,7 @@ class StaticPagesController < ApplicationController
       redirect_to(root_path, alert: "Empty field!") and return
     else
         @parameter = params[:search].downcase
-        @results = Review.all.where("lower(tittle) LIKE :search", search: "%#{@parameter}%").paginate(:page => params[:page], :per_page => 10)
+        @results = Review.all.where("lower(title) LIKE :search", search: "%#{@parameter}%").paginate(:page => params[:page], :per_page => 10)
 
     end
   end

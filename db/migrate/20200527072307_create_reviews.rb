@@ -9,6 +9,7 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.boolean :hot
       t.references :user, null: false, foreign_key: true
       t.boolean :appended
+      t.references :topic, null: false, foreign_key: true
       t.timestamps
     end
   end
