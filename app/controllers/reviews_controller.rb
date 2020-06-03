@@ -42,6 +42,7 @@ class ReviewsController < ApplicationController
 		@comment = @review.comments.build
 		@comments = Comment.new
 		@review = Review.find(params[:id])
+		@user = User.find(params[:id])
 		if !@review.appended
 			redirect_to root_url
 		end
@@ -57,10 +58,5 @@ class ReviewsController < ApplicationController
 	def review_params
 		params.require(:review).permit(:content, :title)
 	end
-
-  
-
-
-  
 
 end
