@@ -97,10 +97,9 @@ ActiveRecord::Schema.define(version: 2020_05_29_081053) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-
-  add_foreign_key "hastags", "reviews"
-  add_foreign_key "hastags", "topics"
   add_foreign_key "comments", "reviews"
   add_foreign_key "comments", "users"
+  add_foreign_key "hastags", "reviews"
+  add_foreign_key "hastags", "topics"
   add_foreign_key "reviews", "users"
 end

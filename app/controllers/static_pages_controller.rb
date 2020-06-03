@@ -18,3 +18,6 @@ class StaticPagesController < ApplicationController
         @results = Review.all.where("lower(tittle) LIKE :search", search: "%#{@parameter}%").paginate(:page => params[:page], :per_page => 10)
 
     end
+  end
+end
+
