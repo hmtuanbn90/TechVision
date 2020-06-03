@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_073056) do
+ActiveRecord::Schema.define(version: 2020_05_29_081053) do
+
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.string "type", limit: 30
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -33,6 +43,13 @@ ActiveRecord::Schema.define(version: 2020_05_27_073056) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "magazines", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -47,13 +64,14 @@ ActiveRecord::Schema.define(version: 2020_05_27_073056) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.text "tittle"
+    t.string "title"
     t.text "content"
     t.text "about"
     t.text "imager"
     t.integer "view"
     t.boolean "hot"
     t.integer "user_id", null: false
+    t.boolean "appended"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_reviews_on_user_id"
