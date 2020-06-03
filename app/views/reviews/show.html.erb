@@ -27,11 +27,11 @@
 								<figure class="figure-img">
 									<%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "img-responsive", alt: "blog-post.html"),"#"%>
 								</figure>
-								
+
 								<%= @review.content.html_safe %>
 
 						<!-- /author -->
-						
+
 						<div>
 							<%= link_to "New Review", new_review_path, class: "btn btn-primary" %><br>
 							<%= link_to "Edit Review", edit_review_path(@review), class: "btn btn-primary" %><br>
@@ -96,13 +96,7 @@
 						</div>
 
 <div id="comments">
-
-<div>
-
-  <%= render 'comments' %>
   <div>
   <%= render "comments/comments" %>
   </div>
-
-</div>
 

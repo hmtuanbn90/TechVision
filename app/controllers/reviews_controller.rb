@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
 
 	def index
     	@reviews = Review.order("created_at DESC")
-    	
+
   	end
 
 	def new
@@ -34,15 +34,15 @@ class ReviewsController < ApplicationController
 			flash[:success] = "Review updated"
 			redirect_to @review
 		else
-			rennder :edit	
+			rennder :edit
 		end
 	end
 
 	def show
-		@comment = @review.comments.build
-		@comments = Comment.new
+
 		@review = Review.find(params[:id])
-		@user = User.find(params[:id])
+		@comments = Comment.new
+		@comment = @review.comments.build
 		if !@review.appended
 			redirect_to root_url
 		end
