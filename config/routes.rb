@@ -8,5 +8,12 @@ get '/about',   to: 'static_pages#about'
 get '/contact', to: 'static_pages#contact'
 get '/signup',  to: 'users#new'
 get '/search' => 'static_pages#search', :as => 'search_page'
+<<<<<<< 3ffa657991afcedec91518818b5608a3273f8396
 resources :reviews
+=======
+
+  resources :reviews do
+    resources :comments, only:[:create, :edit, :destroy]
+  end
+>>>>>>> nho Duong fix loi ko hien thi bai comment
 end

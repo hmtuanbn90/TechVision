@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
 
-	
 	def index
     	@reviews = Review.order("created_at DESC")
     	
@@ -40,11 +39,15 @@ class ReviewsController < ApplicationController
 	end
 
 	def show
+		@comment = @review.comments.build
+		@comments = Comment.new
 		@review = Review.find(params[:id])
+		@user = User.find(params[:id])
 		if !@review.appended
 			redirect_to root_url
 		end
 	end
+
 
 	def edit
 		@review = Review.find(params[:id])
@@ -55,4 +58,5 @@ class ReviewsController < ApplicationController
 	def review_params
 		params.require(:review).permit(:content, :title)
 	end
+
 end

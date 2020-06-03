@@ -7,6 +7,6 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.boolean :admin
 
       t.timestamps
-    end
+      end
   end
 end
