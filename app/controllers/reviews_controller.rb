@@ -10,8 +10,6 @@ class ReviewsController < ApplicationController
 	def new
 		@review  = Review.new
 		@topics  = Topic.all
-
-
 	end
 
 	def create
@@ -21,6 +19,7 @@ class ReviewsController < ApplicationController
 			flash[:success] = "Review created!"
 			redirect_to @review
 		else
+			@topics = Topic.all
 			render :new
 		end
 	end
@@ -38,7 +37,7 @@ class ReviewsController < ApplicationController
 			flash[:success] = "Review updated"
 			redirect_to @review
 		else
-			rennder :edit
+			render :edit
 		end
 	end
 
