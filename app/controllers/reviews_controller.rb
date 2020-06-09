@@ -47,9 +47,9 @@ class ReviewsController < ApplicationController
 		@comments = Comment.new
 		@comment  = @review.comments.build
 		@hashtags = @review.hashtags
-		# unless @review.appended
-		# 	redirect_to root_path
-		# end
+		unless @review.appended
+			redirect_to root_path
+		end
 	end
 
 	def bookmark

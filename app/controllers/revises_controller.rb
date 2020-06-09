@@ -21,7 +21,9 @@ class RevisesController < ApplicationController
   def show
     @review = Review.find(params[:id])
     @comments = Comment.new
+    @bookmark = Bookmark.new
+    @hashtags = @review.hashtags
     @comment = @review.comments.build
-
+    render "reviews/show"
     end
 end
