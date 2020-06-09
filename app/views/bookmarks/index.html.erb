@@ -1,0 +1,15 @@
+<div class="container">
+ <% @bookmarks.each do |bookmark| %>
+<div>
+  <b>Bookmarks:</b><br>
+  <span><%= bookmark.user.name %></span><br>
+  <b>Title:</b>
+  <span><%= link_to bookmark.review.title, review_path(bookmark.review.id) %></span>
+</div>
+<div>
+  <%= link_to "Delete", bookmark, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
+</div>
+<br>
+
+<% end %>
+</div>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  scope "(:locale)", locale: /en|vi|ja/ do
   mount Ckeditor::Engine => '/ckeditor'
   resources :magazines
   get 'users/new'
@@ -8,8 +10,13 @@ Rails.application.routes.draw do
   get '/contact', to: 'static_pages#contact'
   get '/signup',  to: 'users#new'
   get '/search' => 'static_pages#search', :as => 'search_page'
+
+  resources :users	
   resources :reviews do
-    resources :comments, only:[:create, :edit, :destroy]
+    resources :comments, only: [:create, :edit, :destroy]
   end
   resources :hashtags
+  resources :bookmarks
+  end
+
 end

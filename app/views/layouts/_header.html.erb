@@ -17,7 +17,16 @@
               <li class=""><a href="category.html">Sony</a></li>
               <li class=""><a href="category.html">Xiaomi</a></li>
               <li class=""><a href="category.html">Huawei</a></li>
-              <li class=""><a href="category.html">Nokia</a></li>
+              <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      Languages <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><%= link_to "English", locale:"en" %></li>
+                      <li><%= link_to "Vietnamese", locale:"vi" %></li> 
+                      <li><%= link_to "Japanese", locale:"ja" %></li>      
+                    </ul>
+                </li>
             </ul>
             <!-- /nav -->
 
@@ -25,7 +34,6 @@
             <div class="search col-md-4">
               <%= form_tag(search_page_path, :method => "get") do %>
               <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control", id: "myInput"%>
-
                 <% end %>
               </div>
             <div class="nav-btns">
@@ -47,6 +55,7 @@
         </div>
         <!-- /Main Nav -->
 
+
         <!-- Aside Nav -->
         <div id="nav-aside">
           <!-- nav -->
@@ -56,7 +65,7 @@
               <li class="nav-li"><a href="about.html">About Us</a></li>
               <li class="nav-li"><a href="#">Contacts</a></li>
               <li class="nav-li"><a href="#">Login</a></li>
-
+              <li class="nav-li"><a href="#">Bookmark</a></li>
             </ul>
           </div>
 
