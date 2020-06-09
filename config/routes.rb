@@ -11,12 +11,12 @@ Rails.application.routes.draw do
   get '/signup',  to: 'users#new'
   get '/search' => 'static_pages#search', :as => 'search_page'
 
-  resources :users	
+  resources :users
+  resources :revises
   resources :reviews do
     resources :comments, only: [:create, :edit, :destroy]
-  end
+    end
   resources :hashtags
   resources :bookmarks
   end
-
 end

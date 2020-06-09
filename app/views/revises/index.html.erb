@@ -1,0 +1,18 @@
+<br><br>
+<div class="container">
+  <% @reviews.each do |review| %>
+    <div>
+      <b>User name:</b><br>
+        <span><%= review.user.name %></span><br>
+      <b>Title:</b><br>
+        <span><%= review.title %></span><br>
+      <b>About:</b>
+        <span><%= review.about %></span>
+      </div>
+      <div>
+      <%= link_to "Read", revise_path(review), class: "btn btn-primary" %>
+      <%= link_to "Accept", edit_revise_path(review), class: "btn btn-primary" %>
+      <%= link_to "Delete", revise_path(review), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
+    </div><br><br>
+  <% end %>
+</div>

@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
 
 	before_action :find_topic, only: :create
 
-	
+
 	def index
 		@reviews = Review.order("created_at DESC")
   	end
@@ -10,8 +10,6 @@ class ReviewsController < ApplicationController
 	def new
 		@review  = Review.new
 		@topics  = Topic.all
-
-
 	end
 
 	def create
@@ -21,6 +19,7 @@ class ReviewsController < ApplicationController
 			flash[:success] = "Review created!"
 			redirect_to @review
 		else
+			@topics = Topic.all
 			render :new
 		end
 	end
@@ -38,7 +37,7 @@ class ReviewsController < ApplicationController
 			flash[:success] = "Review updated"
 			redirect_to @review
 		else
-			rennder :edit
+			render :edit
 		end
 	end
 
@@ -48,9 +47,9 @@ class ReviewsController < ApplicationController
 		@comments = Comment.new
 		@comment  = @review.comments.build
 		@hashtags = @review.hashtags
-		# unless @review.appended
-		# 	redirect_to root_path
-		# end
+		unless @review.appended
+			redirect_to root_path
+		end
 	end
 
 	def bookmark
@@ -72,7 +71,6 @@ class ReviewsController < ApplicationController
 	end
 
 	def find_topic
-		@topic = Topic.find_by id: review_params[:topic_id] 
+		@topic = Topic.find_by id: review_params[:topic_id]
 	end
-
 end

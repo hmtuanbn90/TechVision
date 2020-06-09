@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 2020_06_05_022947) do
     t.text "imager"
     t.integer "view"
     t.boolean "hot"
-    t.boolean "appended"
+    t.boolean "appended", default: false
     t.integer "user_id", null: false
     t.integer "topic_id", null: false
     t.datetime "created_at", precision: 6, null: false

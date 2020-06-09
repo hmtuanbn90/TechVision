@@ -23,7 +23,7 @@
 					<!-- Post content -->
 					<div class="col-md-8">
 						<div>
-							<%= render 'bookmark_form' %>
+							<%= render 'reviews/bookmark_form' %>
 						</div>
 						<div class="section-row sticky-container">
 							<div class="main-post">
@@ -62,6 +62,13 @@
 
 <div id="comments">
   <div>
+   <h2><%= @review.title %><h2>
+  </div>
+  <div>
+    <%= @review.content %>
+  </div>
+  <div>
   <%= render "comments/comments" %>
   </div>
 
+</div>
