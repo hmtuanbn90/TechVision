@@ -118,13 +118,10 @@ ActiveRecord::Schema.define(version: 2020_06_05_022947) do
 
   add_foreign_key "comments", "reviews"
   add_foreign_key "comments", "users"
-
   add_foreign_key "hashtag_details", "hashtags"
   add_foreign_key "hashtag_details", "reviews"
-
   add_foreign_key "likes", "reviews"
   add_foreign_key "likes", "users"
-
   add_foreign_key "reviews", "topics"
   add_foreign_key "reviews", "users"
 end

@@ -16,3 +16,7 @@ ja:
       Delete: "削除"
       Comment_here: "コメント"
       Send: "送る"
+
+  comments:
+    _comments:
+      comment: "コメント"

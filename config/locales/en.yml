@@ -16,3 +16,7 @@ en:
       Delete: "Delete"
       Comment_here: "Comment here"
       Send: "Send"
+
+  comments:
+    _comments:
+      comment: "Comment"

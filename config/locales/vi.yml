@@ -16,3 +16,7 @@ vi:
       Delete: "Xoá"
       Comment_here: "Bình luận tại đây"
       Send: "Gửi bình luận"
+
+  comments:
+    _comments:
+      comment: "Bình luận"

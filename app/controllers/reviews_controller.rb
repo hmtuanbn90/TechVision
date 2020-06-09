@@ -68,7 +68,7 @@ class ReviewsController < ApplicationController
 	private
 
 	def review_params
-		params.require(:review).permit(:content, :title, hashtag_ids:[], :topic_id)
+		params.require(:review).permit(:content, :title, :topic_id, hashtag_ids:[])
 	end
 
 	def find_topic
