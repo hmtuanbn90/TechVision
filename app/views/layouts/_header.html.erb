@@ -17,15 +17,13 @@
               <li class=""><a href="category.html">Sony</a></li>
               <li class=""><a href="category.html">Xiaomi</a></li>
               <li class=""><a href="category.html">Huawei</a></li>
-              <li class=""><a href="category.html">Nokia</a></li>
             </ul>
             <!-- /nav -->
 
             <!-- search & aside toggle -->
             <div class="search col-md-4">
               <%= form_tag(search_page_path, :method => "get") do %>
-              <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control", id: "myInput"%>
-
+              <%= search_field_tag :search, params[:search], placeholder: t(:Search, scope: "static_pages.home"), class: "form-control", id: "myInput"%>
                 <% end %>
               </div>
             <div class="nav-btns">
@@ -47,6 +45,7 @@
         </div>
         <!-- /Main Nav -->
 
+
         <!-- Aside Nav -->
         <div id="nav-aside">
           <!-- nav -->
@@ -56,7 +55,7 @@
               <li class="nav-li"><a href="about.html">About Us</a></li>
               <li class="nav-li"><a href="#">Contacts</a></li>
               <li class="nav-li"><a href="#">Login</a></li>
-
+              <li class="nav-li"><a href="#">Bookmark</a></li>
             </ul>
           </div>
 

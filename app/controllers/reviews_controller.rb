@@ -1,12 +1,16 @@
 class ReviewsController < ApplicationController
 
+	before_action :find_topic, only: :create
+
+	
 	def index
-    @reviews = Review.order("created_at DESC")
-  end
+		@reviews = Review.order("created_at DESC")
+  	end
 
 	def new
 		@review  = Review.new
 		@topics  = Topic.all
+
 
 	end
 
@@ -39,7 +43,8 @@ class ReviewsController < ApplicationController
 	end
 
 	def show
-		@review   = Review.find(params[:id])
+		@bookmark = Bookmark.new
+		@review = Review.find(params[:id])
 		@comments = Comment.new
 		@comment  = @review.comments.build
 		@hashtags = @review.hashtags
@@ -48,15 +53,26 @@ class ReviewsController < ApplicationController
 		# end
 	end
 
+	def bookmark
+		@review = Review.find(params[:id])
+		@reviews = @review.bookmark
+		render :show
+	end
+
 
 	def edit
 		@review = Review.find(params[:id])
+		@topics = Topic.all
 	end
 
 	private
 
 	def review_params
-		params.require(:review).permit(:content, :title, hashtag_ids:[])
+		params.require(:review).permit(:content, :title, :topic_id, hashtag_ids:[])
+	end
+
+	def find_topic
+		@topic = Topic.find_by id: review_params[:topic_id] 
 	end
 
 end

@@ -1,0 +1,22 @@
+vi:
+  static_pages:
+    home:
+      Recent Posts: "Mới nhất" 
+      Most Read: "Đọc nhiều nhất"
+      Featured Posts: "Nổi bật"
+      Topic: "Chủ đề"
+      Search: "Tìm kiếm"
+
+  reviews:
+    show:
+      Topic: "Chủ đề"
+      bookmark: "Lưu bài viết"
+      New Review: "Bài viết mới"
+      Edit Review: "Chỉnh sửa"
+      Delete: "Xoá"
+      Comment_here: "Bình luận tại đây"
+      Send: "Gửi bình luận"
+
+  comments:
+    _comments:
+      comment: "Bình luận"

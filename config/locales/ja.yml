@@ -1,0 +1,22 @@
+ja:
+  static_pages:
+    home:
+      Recent Posts: "最近の投稿"
+      Most Read: "よく読む"
+      Featured Posts: "注目のポスト"
+      Topic: "トピック"
+      Search: "探す" 
+
+  reviews:
+    show:
+      Topic: "トピック"
+      bookmark: "ブックマット"
+      New Review: "新しレビュアー"
+      Edit Review: "編集"
+      Delete: "削除"
+      Comment_here: "コメント"
+      Send: "送る"
+
+  comments:
+    _comments:
+      comment: "コメント"
