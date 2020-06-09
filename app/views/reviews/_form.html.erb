@@ -7,16 +7,17 @@
 <% end %>
 
 <%= form_for @review do |f| %>
+      <div>
+        <ul id="hashtag_name_ul">
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
   <div>
     <%= f.label :topic %>
   </div>
-  <select class="topic-css">
-    <% if !@topic.nil? %>
-      <%= @topic.each do |topics| %>
-    <option><%= topics.name %></option>
-      <% end %>
-    <% end %>
-  </select>
+  <%= f.select :topic_id, options_from_collection_for_select(@topics, "id", "name") %>
   <div>
     <%= f.label :title %>
   </div>
