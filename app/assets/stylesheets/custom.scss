@@ -1005,3 +1005,44 @@ RESPONSIVE
 .alert-success{
     margin-top: 24px;
 }
+
+/*hagtag*/
+.label-info {
+  background-color: #5bc0de;
+  display: inline-block;
+  padding: 0.2em 0.6em 0.3em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25em;
+}
+.hashtag{
+  margin-bottom: 15px;
+}
+.hashtag>span>a{
+    color: white;
+    padding: 10px 10px;
+}
+.list-style-hd{
+    list-style: none;
+}
+.list-style-hd1{
+    top: 26px;
+    position: relative;
+    right: 41px;
+}
+.finter-date{
+    font-size: 16px;
+    line-height: 45px;
+    display: block;
+    position: relative;
+    border-bottom: 1px solid #eee;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: #c7dfe3;
+
+}

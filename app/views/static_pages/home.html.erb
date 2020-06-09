@@ -2,13 +2,14 @@
       <!-- container -->
       <div class="container">
         <!-- row -->
+        <!-- post-new -->
         <div class="row">
           <!-- post-new -->
           <% if !@review_new.empty? %>
             <% @review_new.each do |review_news| %>
               <div class="col-md-6">
                 <div class="post post-thumb">
-                  <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html"),review_path(@review) %>
+                  <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html"),review_path(review_news) %>
                   <div class="post-body">
                     <div class="post-meta">
                       <a class="post-category cat-2" href="#"><%=review_news.topic.name%></a>
@@ -24,7 +25,7 @@
         </div>
         <!-- /row -->
 
-        <!-- row -->
+        <!-- Recent Posts -->
         <div class="row">
           <div class="col-md-12">
             <div class="section-title">
@@ -162,7 +163,7 @@
     </div>
     <!-- /section -->
 
-    <!-- section -->
+    <!-- Featured Posts -->
     <div class="section section-grey">
       <!-- container -->
       <div class="container">
@@ -341,15 +342,11 @@
             <div class="aside-widget">
               <div class="tags-widget">
                 <ul>
-                  <li><a href="#">Chrome</a></li>
-                  <li><a href="#">CSS</a></li>
-                  <li><a href="#">Tutorial</a></li>
-                  <li><a href="#">Backend</a></li>
-                  <li><a href="#">JQuery</a></li>
-                  <li><a href="#">Design</a></li>
-                  <li><a href="#">Development</a></li>
-                  <li><a href="#">JavaScript</a></li>
-                  <li><a href="#">Website</a></li>
+                  <% if ! @hashtags.empty? %>
+                    <%  @hashtags.each do | hashtag| %>
+                      <li><%=link_to hashtag.name,"#" %></li>
+                    <% end %>
+                  <% end %>
                 </ul>
               </div>
             </div>

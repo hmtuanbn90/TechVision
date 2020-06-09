@@ -4,18 +4,18 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("turbolinks").start()
+// require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
+require("jquery.autocomplete")
 import "bootstrap"
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 // import 'js-autocomplete/auto-complete.css';
 // import autocomplete from 'js-autocomplete';
-//= require jquery
-//= require jquery_ujs
-//= require ckeditor/init
-//= require turbolinks
-//= require_tree
+
+
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -25,6 +25,7 @@ import "bootstrap"
 // const imagePath = (name) => images(name, true)
 (function($) {
   "use strict"
+
 
   // Fixed Nav
   var lastScrollTop = 0;
@@ -101,6 +102,10 @@ import "bootstrap"
       }
     }
   }
+
+
+
+
 $('#myInput').keypress(function(event){
   var keycode = (event.keyCode ? event.keyCode : event.which);
   if (keycode == '13') {
@@ -116,6 +121,7 @@ $(document).ready(function(){
   });
 });
 
+
   $(window).on('scroll', function() {
     stickyShares($(this).scrollTop());
   });
@@ -128,27 +134,6 @@ $(document).ready(function(){
   setStickyPos();
 
 })(jQuery);
-// js search
+// hagtag
 
 
-// const autocompleteSearch = function() {
-//   const skills = JSON.parse(document.getElementById('search-data').dataset.skills)
-//   const searchInput = document.getElementById('q');
-
-//   if (skills && searchInput) {
-//     new autocomplete({
-//       selector: searchInput,
-//       minChars: 1,
-//       source: function(term, suggest){
-//           term = term.toLowerCase();
-//           const choices = skills;
-//           const matches = [];
-//           for (let i = 0; i < choices.length; i++)
-//               if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
-//           suggest(matches);
-//       },
-//     });
-//   }
-// };
-
-// export { autocompleteSearch };

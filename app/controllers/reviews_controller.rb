@@ -1,18 +1,18 @@
 class ReviewsController < ApplicationController
 
 	def index
-    	@reviews = Review.order("created_at DESC")
-
-  	end
+    @reviews = Review.order("created_at DESC")
+  end
 
 	def new
-		@review = Review.new
-		@topic = Topic.all
+		@review  = Review.new
+		@topics  = Topic.all
+
 	end
 
 	def create
-		@review = Review.new(review_params)
-		@review.user_id = 1
+		@review           = Review.new(review_params)
+		@review.user_id   = 1
 		if @review.save
 			flash[:success] = "Review created!"
 			redirect_to @review
@@ -39,13 +39,13 @@ class ReviewsController < ApplicationController
 	end
 
 	def show
-
-		@review = Review.find(params[:id])
+		@review   = Review.find(params[:id])
 		@comments = Comment.new
-		@comment = @review.comments.build
-		if !@review.appended
-			redirect_to root_url
-		end
+		@comment  = @review.comments.build
+		@hashtags = @review.hashtags
+		# unless @review.appended
+		# 	redirect_to root_path
+		# end
 	end
 
 
@@ -56,7 +56,7 @@ class ReviewsController < ApplicationController
 	private
 
 	def review_params
-		params.require(:review).permit(:content, :title)
+		params.require(:review).permit(:content, :title, hashtag_ids:[])
 	end
 
 end

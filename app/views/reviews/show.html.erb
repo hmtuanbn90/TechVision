@@ -1,5 +1,5 @@
 <div id="post-header" class="page-header">
-				<div class="background-img" style="background-image: url('./img/post-page.jpg');"></div>
+				<div class="background-img" style="background-image: url('/assets/post-page.jpg');"></div>
 				<div class="container">
 					<div class="row">
 						<div class="col-md-10">
@@ -29,9 +29,18 @@
 								</figure>
 
 								<%= @review.content.html_safe %>
-
 						<!-- /author -->
-
+						<div class="aside-widget">
+              <div class="tags-widget">
+                <ul>
+								<% if !@hashtags.empty? %>
+      						<% @hashtags.each do |hashtag| %>
+										<li><%=link_to hashtag.name,"#" %></li>
+										<% end %>
+									<% end %>
+								<ul>
+							</div>
+						</div>
 						<div>
 							<%= link_to "New Review", new_review_path, class: "btn btn-primary" %><br>
 							<%= link_to "Edit Review", edit_review_path(@review), class: "btn btn-primary" %><br>
@@ -45,54 +54,7 @@
 							</div>
 
 							<div class="post-comments">
-								<!-- comment -->
-								<div class="media">
-									<div class="media-left">
-										<img class="media-object" src="./img/avatar.png" alt="">
-									</div>
-									<div class="media-body">
-										<div class="media-heading">
-											<h4>John Doe</h4>
-											<span class="time">March 27, 2018 at 8:00 am</span>
-											<a href="#" class="reply">Reply</a>
-										</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
-										<!-- comment -->
-										<div class="media">
-											<div class="media-left">
-												<img class="media-object" src="./img/avatar.png" alt="">
-											</div>
-											<div class="media-body">
-												<div class="media-heading">
-													<h4>John Doe</h4>
-													<span class="time">March 27, 2018 at 8:00 am</span>
-													<a href="#" class="reply">Reply</a>
-												</div>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-											</div>
-										</div>
-										<!-- /comment -->
-									</div>
-								</div>
-								<!-- /comment -->
-
-								<!-- comment -->
-								<div class="media">
-									<div class="media-left">
-										<img class="media-object" src="./img/avatar.png" alt="">
-									</div>
-									<div class="media-body">
-										<div class="media-heading">
-											<h4>John Doe</h4>
-											<span class="time">March 27, 2018 at 8:00 am</span>
-											<a href="#" class="reply">Reply</a>
-										</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-									</div>
-								</div>
-								<!-- /comment -->
-							</div>
 						</div>
 
 <div id="comments">

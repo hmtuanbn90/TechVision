@@ -32,17 +32,16 @@ ActiveRecord::Schema.define(version: 2020_06_03_072504) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "hagtag_details", force: :cascade do |t|
-    t.string "name"
-    t.integer "hagtag_id", null: false
+  create_table "hashtag_details", force: :cascade do |t|
+    t.integer "hashtag_id", null: false
     t.integer "review_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["hagtag_id"], name: "index_hagtag_details_on_hagtag_id"
-    t.index ["review_id"], name: "index_hagtag_details_on_review_id"
+    t.index ["hashtag_id"], name: "index_hashtag_details_on_hashtag_id"
+    t.index ["review_id"], name: "index_hashtag_details_on_review_id"
   end
 
-  create_table "hastags", force: :cascade do |t|
+  create_table "hashtags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -80,8 +79,8 @@ ActiveRecord::Schema.define(version: 2020_06_03_072504) do
     t.text "imager"
     t.integer "view"
     t.boolean "hot"
-    t.integer "user_id", null: false
     t.boolean "appended"
+    t.integer "user_id", null: false
     t.integer "topic_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -107,8 +106,8 @@ ActiveRecord::Schema.define(version: 2020_06_03_072504) do
 
   add_foreign_key "comments", "reviews"
   add_foreign_key "comments", "users"
-  add_foreign_key "hagtag_details", "hagtags"
-  add_foreign_key "hagtag_details", "reviews"
+  add_foreign_key "hashtag_details", "hashtags"
+  add_foreign_key "hashtag_details", "reviews"
   add_foreign_key "reviews", "topics"
   add_foreign_key "reviews", "users"
 end
