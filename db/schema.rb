@@ -57,18 +57,10 @@ ActiveRecord::Schema.define(version: 2020_06_10_063847) do
   create_table "likes", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "review_id", null: false
-    t.boolean "like"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["review_id"], name: "index_likes_on_review_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
-  end
-
-  create_table "magazines", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "relationships", force: :cascade do |t|

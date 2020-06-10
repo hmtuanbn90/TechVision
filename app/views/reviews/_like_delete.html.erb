@@ -1,0 +1,5 @@
+<% pre_like = @review.likes.find {|like| like.user_id == current_user.id} %>
+<div id = "d_like">
+  <%= link_to "Delete Like", review_like_path(@review, pre_like), method: :delete,
+                                       remote: :true, class: "btn btn-danger" %>
+</div>

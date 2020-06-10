@@ -2,7 +2,8 @@ class Review < ApplicationRecord
 
   belongs_to :user
   belongs_to :topic
-  has_many :likes , dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :hashtag_details, dependent: :destroy
   has_many :hashtags, through: :hashtag_details
   has_many  :comments, dependent: :destroy
@@ -23,6 +24,8 @@ class Review < ApplicationRecord
     (#{idHashtags}) and review_id <> ?"
   scope :reviewHashtag, -> (id){Review.where("id in
     (#{idReviews})", id, id).limit(5)}
+  scope :all_appended_false, -> { where appended: false }
+  default_scope -> { order created_at: :desc }
 	validates :user_id, presence: true
 	validates :content, presence: true, length: { maximum: 5000 }
   def bookmark(other_user)

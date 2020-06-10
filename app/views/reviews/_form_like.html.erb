@@ -1,0 +1,8 @@
+<div id = "form_like">
+  <% pre_like = @review.likes.find {|like| like.user_id == current_user.id} %>
+  <% if pre_like %>
+    <%= render 'like_delete' %>
+  <% else %>
+    <%= render 'like_add' %>
+  <% end %>
+</div>
