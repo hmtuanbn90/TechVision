@@ -1,25 +1,22 @@
 <script>
-      $('#myInput').autocomplete({
-        source: function (request, response) {
-          $.ajax({
-            url: "/search", // should be with '/'
-            data: { title: request.term },
-            dataType: 'json',
-            success: function (data) {
-              response($.map(data, function (dataItem) {
-                  return {
-                      label: dataItem.title,
-                      value: dataItem.id
-                  };
-              }));
-            }
-          });
+$('#myInput').autocomplete({
+  source: function (request, response) {
+    $.ajax({
+      url: "/search", // should be with '/'
+      data: { title: request.term },
+      dataType: 'json',
+      success: function (data) {
+        response($.map(data, function (dataItem) {
+            return {data: dataItem.id, value: dataItem.title };
+        }));
+      },
+    });
+  },
+   select: function(event, ui) {
+             window.location.assign('http://localhost:3000/reviews/' +ui.item.data);
         },
-        select: function(event, ui) {
-        alert( ui.item.value );
-        },
+});
 
-      });
     </script>
 <footer id="footer">
       <!-- container -->
