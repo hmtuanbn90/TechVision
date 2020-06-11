@@ -55,8 +55,24 @@
               <li class="nav-li"><a href="index.html">Home</a></li>
               <li class="nav-li"><a href="about.html">About Us</a></li>
               <li class="nav-li"><a href="#">Contacts</a></li>
-              <li class="nav-li"><a href="#">Login</a></li>
-              <li class="nav-li"><a href="#">Bookmark</a></li>
+              <% if logged_in? %>
+                <li class="nav-li"><%= link_to "Users", users_path %></li>
+                  <li class="dropdown nav-li">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      Account <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li class="nav-li"><%= link_to "Profile", current_user %></li>
+                      <li class="nav-li"><%= link_to "Settings", edit_user_path(current_user) %></li>
+                      <li class="divider"></li>
+                      <li class="nav-li">
+                        <%= link_to "Log out", logout_path, method: :delete %>
+                      </li>
+                    </ul>
+                  </li>
+               <% else %>
+                 <li class="nav-li"><%= link_to "Log in", login_path %></li>
+               <% end %>
             </ul>
           </div>
 

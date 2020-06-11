@@ -5,11 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 User.create(name:"Hoang Tung",password:"123456",email:"hoangvantung.it@gmail.com",admin:true )
 User.create(name:"Hoang Tuan",password:"123456",email:"hoangvantuan.it@gmail.com",admin:true )
 User.create(name:"Nguyen Duy",password:"123456",email:"hoangvanduy.it@gmail.com",admin:true )
-
-
+User.create(name:"Nguyen Duy",password:"zxczxc",email:"duyn02992@gmail.com",admin:true )
+User.create(name:"Hoang Tung1",password:"123456",email:"hoangvantung1.it@gmail.com",admin:false )
+User.create(name:"Hoang Tung2",password:"123456",email:"hoangvantung2.it@gmail.com",admin:false )
+User.create(name:"Hoang Tung3",password:"123456",email:"hoangvantung3.it@gmail.com",admin:false )
+User.create(name:"Hoang Tung4",password:"123456",email:"hoangvantung4.it@gmail.com",admin:false )
+User.create(name:"Hoang Tung5",password:"123456",email:"hoangvantung5.it@gmail.com",admin:false )
 Topic.create(name:"Sony",about:"thuong hieu noi tieng den tu Nhat Ban" )
 Topic.create(name:"Xiaomi",about:"thuong hieu noi tieng den tu Trung Quoc" )
 
