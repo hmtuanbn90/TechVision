@@ -12,10 +12,10 @@
                   <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html"),review_path(review_news) %>
                   <div class="post-body">
                     <div class="post-meta">
-                      <a class="post-category cat-2" href="#"><%=review_news.topic.name%></a>
-                      <span class="post-date"><%=review_news.created_at%></span>
+                      <%=link_to review_news.topic.name, "#", class: "post-category cat-2" %>
+                      <span class="post-date" style="background: #333"><%=review_news.created_at%></span>
                     </div>
-                    <h3 class="post-title"><a href="#"><%=review_news.title%></h3>
+                    <h3 class="post-title" style="background: #333"><%=link_to review_news.title,review_path(review_news) %></h3>
                   </div>
                 </div>
               </div>
@@ -34,73 +34,64 @@
           </div>
 
           <!-- post -->
-          <% if ! @RecentPosts1.empty? %>
+          <% if ! @RecentPosts.empty? %>
           <% dem = 0 %>
-            <%  @RecentPosts1.each do | recentPost1| %>
+            <%  @RecentPosts.each do | recentPost| %>
               <% dem += 1 %>
-              <div class="col-md-4">
-                <div class="post">
-                  <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html") ,"#"%>
-                  <div class="post-body">
-                    <div class="post-meta">
-                      <a class="post-category cat-1" href="#"><%=recentPost1.topic.name%></a>
-                      <span class="post-date"><%= recentPost1.created_at%></span>
+              <% if dem < 7 %>
+                <div class="col-md-4">
+                   <div class="post">
+                    <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html") ,review_path(recentPost)%>
+                    <div class="post-body">
+                      <div class="post-meta">
+                        <a class="post-category cat-1" href="#"><%=recentPost.topic.name%></a>
+                        <span class="post-date"><%= recentPost.created_at%></span>
+                      </div>
+                      <h3 class="post-title"><%=link_to recentPost.title, review_path(recentPost)%></h3>
                     </div>
-                    <h3 class="post-title"><a href="#"><%=recentPost1.title%></a></h3>
                   </div>
                 </div>
-              </div>
-              <% if dem == 3 %>
+               <% elsif dem > 7 %>
+                <div class="col-md-6">
+                  <div class="post">
+                    <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html") ,review_path(recentPost)%>
+                    <div class="post-body">
+                      <div class="post-meta">
+                        <a class="post-category cat-1" href="#"><%=recentPost.topic.name%></a>
+                        <span class="post-date"><%= recentPost.created_at%></span>
+                      </div>
+                      <h3 class="post-title"><%=link_to recentPost.title, review_path(recentPost)%></h3>
+                    </div>
+                  </div>
+                </div>
+              <% elsif dem == 3 %>
                 <div class="clearfix visible-md visible-lg"></div>
-              <%end%>
+              <% elsif dem == 6 %>
+            </div>
+              <% elsif dem == 7 %>
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="post post-thumb">
+                          <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html") ,review_path(recentPost)%>
+                          <div class="post-body">
+                            <div class="post-meta">
+                              <a class="post-category cat-3" href="#"><%=recentPost.topic.name%></a>
+                              <span class="post-date"><%= recentPost.created_at%></span>
+                            </div>
+                            <h3 class="post-title"><%= link_to recentPost.title, review_path(recentPost)%></h3>
+                          </div>
+                        </div>
+                      </div>
+              <% elsif dem == 9 %>
+                <div class="clearfix visible-md visible-lg"></div>
+              <% elsif dem == 10 %>
+              <% end %>
             <%end%>
           <%end%>
-
-        <!-- row -->
-        <div class="row">
-          <div class="col-md-8">
-            <div class="row">
-              <!-- post -->
-               <% if ! @RecentPosts2.empty? %>
-                <%  @RecentPosts2.each do | recentPost2| %>
-                  <div class="col-md-12">
-                    <div class="post post-thumb">
-                      <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html") ,"#"%>
-                      <div class="post-body">
-                        <div class="post-meta">
-                          <a class="post-category cat-3" href="#"><%=recentPost2.topic.name%></a>
-                          <span class="post-date"><%= recentPost2.created_at%></span>
-                        </div>
-                        <h3 class="post-title"><a href="#"><%=recentPost2.title%></a></h3>
-                      </div>
-                    </div>
-                  </div>
-                <%end%>
-              <%end%>
-              <!-- /post -->
-
-              <!-- post -->
-              <% if ! @RecentPosts3.empty? %>
-                <% dem2 = 0 %>
-                <%  @RecentPosts3.each do | recentPost3| %>
-                  <% dem2 += 1 %>
-                  <div class="col-md-6">
-                    <div class="post">
-                      <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html") ,"#"%>
-                      <div class="post-body">
-                        <div class="post-meta">
-                          <a class="post-category cat-4" href="#">Css</a>
-                          <span class="post-date"><%= recentPost3.created_at%></span>
-                        </div>
-                        <h3 class="post-title"><a href="#"><%=recentPost3.title%></a></h3>
-                      </div>
-                    </div>
-                  </div>
-                   <% if dem2 == 2 %>
-                    <div class="clearfix visible-md visible-lg"></div>
-                  <%end%>
-                <%end%>
-              <%end%>
+          </div>
+          </div>
               <!-- /post -->
           <div class="col-md-4">
             <!-- post widget -->
@@ -108,18 +99,20 @@
               <div class="section-title">
                 <h2><%= t ".Most Read" %></h2>
               </div>
-              <% if ! @MostReades.empty? %>
-                <%  @MostReades.each do | mostread| %>
+              <% if ! @reviewTops.empty? %>
+                <%  @reviewTops.each do | reviewTop| %>
                   <div class="post post-widget">
-                    <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html") ,"#"%>
+                    <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html") ,review_path(reviewTop)%>
                     <div class="post-body">
-                      <h3 class="post-title"><a href="blog-post.html"><%= mostread.title%></a></h3>
+                      <h3 class="post-title"><%= link_to reviewTop.title, review_path(reviewTop) %></h3>
+                      <p><%= reviewTop.about%></p>
                     </div>
                   </div>
                 <%end%>
               <%end%>
 
             <!-- post widget -->
+<!-- <<<<<<< HEAD -->
             <div class="aside-widget">
               <div class="section-title">
                 <h2><%= t ".Featured Posts" %></h2>
@@ -322,6 +315,10 @@
             <!-- /ad -->
 
             <!-- catagories -->
+<!-- ======= -->
+           <div class="col-md-12">
+            <div class="row">
+<!-- >>>>>>> filter search -->
             <div class="aside-widget">
               <div class="section-title">
                 <h2><%= t ".Topic" %></h2>
@@ -336,24 +333,33 @@
                 </ul>
               </div>
             </div>
-            <!-- /catagories -->
 
-            <!-- tags -->
             <div class="aside-widget">
               <div class="tags-widget">
                 <ul>
                   <% if ! @hashtags.empty? %>
                     <%  @hashtags.each do | hashtag| %>
-                      <li><%=link_to hashtag.name,"#" %></li>
+                      <li><%=link_to hashtag.name, hashtag_path(hashtag) %></li>
                     <% end %>
                   <% end %>
                 </ul>
               </div>
             </div>
-            <!-- /tags -->
+          </div>
+        </div>
+      </div>
+            <!-- /post widget -->
+
+            <!-- ad -->
+
+            <!-- /ad -->
           </div>
         </div>
         <!-- /row -->
       </div>
       <!-- /container -->
     </div>
+    <!-- /section -->
+
+    <!-- Featured Posts -->
+

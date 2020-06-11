@@ -5,6 +5,7 @@ class CreateLikes < ActiveRecord::Migration[6.0]
       t.references :review, null: false, foreign_key: true
       t.boolean :like
       t.timestamps
+
     end
   end
 end

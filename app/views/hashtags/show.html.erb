@@ -19,30 +19,29 @@
   <div class="row">
     <div class="col-md-12">
       <div class="section-title">
-        <h2>Có <%= @results.size %> kết quả cho từ khóa "<%= @parameter%>" </h2>
+
+        <h2>co <%= @reviews.count %> bai viet thuoc <%= @hashtag.name %> </h2>
       </div>
     </div>
     <!-- post -->
-    <% if !@results.empty? %>
-      <% @results.each do |result| %>
+    <% if !@reviews.empty? %>
+      <% @reviews.each do |review| %>
         <div class="col-md-12">
           <div class="post post-row">
-            <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html") ,review_path(result)%>
+            <a href="#"><img class="post-img" alt="blog-post.html" src="/assets/5030401_cover_Xiaomi_Redmi_10X_tinhte-481141e096ce79f4291a4d2fc9fdd29ca4c964ce5aaf37b0aa1b2c478281229b.jpg"></a>
             <div class="post-body">
               <div class="post-meta">
-                <a class="post-category cat-2" href="#"><%=result.topic.name%></a>
-                <span class="post-date"><%=result.created_at%></span>
+                <a class="post-category cat-2" href="#"><%=review.topic.name%></a>
+                <span class="post-date"><%=review.created_at%></span>
               </div>
-              <h3 class="post-title"><%= link_to result.title ,review_path(result) %></h3>
-              <p><%=result.about%></p>
+              <h3 class="post-title"><a href="blog-post.html"><%=review.title%></a></h3>
+              <p><%=review.about%></p>
             </div>
           </div>
         </div>
       <%end%>
-   <%= will_paginate @results %>
+   <%= will_paginate @reviews %>
     <%end%>
     <!-- /post -->
   </div>
 </div>
-
-

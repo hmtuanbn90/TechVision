@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
 	end
 
 	def destroy
-		@review = Review.find(params[:id])
+		@review 	      = Review.find(params[:id])
 		@review.destroy
 		flash[:success] = "Review Deleted!"
 		redirect_to @review
@@ -42,11 +42,19 @@ class ReviewsController < ApplicationController
 	end
 
 	def show
-		@bookmark = Bookmark.new
-		@review = Review.find(params[:id])
-		@comments = Comment.new
-		@comment  = @review.comments.build
-		@hashtags = @review.hashtags
+		@bookmark  = Bookmark.new
+		@review    = Review.find(params[:id])
+		@comments  = Comment.new
+		@comment   = @review.comments.build
+		@hashtags  = @review.hashtags
+		@reviewRelate = []
+		if !@hashtags.nil?
+			@hashtags.each do |hashtag|
+
+				@reviewRelate << hashtag.reviews
+			end
+			@reviewFilter = @reviewRelate.uniq - [@review]
+		end
 		unless @review.appended
 			redirect_to root_path
 		end

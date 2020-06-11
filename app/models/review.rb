@@ -2,6 +2,7 @@ class Review < ApplicationRecord
 
   belongs_to :user
   belongs_to :topic
+  has_many :likes , dependent: :destroy
   has_many :hashtag_details, dependent: :destroy
   has_many :hashtags, through: :hashtag_details
   has_many  :comments, dependent: :destroy
