@@ -6,6 +6,10 @@ class LikesController < ApplicationController
     @like = Like.new
   end
 
+  def index
+    @likes = Like.all
+  end
+
   def create
     @review = Review.find params[:review_id]
     @like = current_user.likes.build review_id: @review.id

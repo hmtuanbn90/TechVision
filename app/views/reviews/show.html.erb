@@ -21,7 +21,7 @@
 				<div class="row">
 					<!-- Post content -->
 					<div class="col-md-8">
-						<div>
+						<div id="bookmark_form">
 							<%= render 'reviews/bookmark_form' %>
 						</div>
 						<div class="section-row sticky-container">
@@ -29,6 +29,7 @@
 								<figure class="figure-img">
 									<%=  image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "img-responsive", alt: "blog-post.html")%>
 								</figure>
+
 								<%= @review.content.html_safe %> <br><br><br>
 								<section class="stats">
 						        <p id = "like_count"><%= @review.likes.count %> <%= (@review.likes.count) == 1 ? 'Like' : 'Likes'%></p>
@@ -45,6 +46,7 @@
                       <%= render "comments/comments" %>
                     </div>
 						    </section>
+								
 						<!-- /author -->
 						<div class="aside-widget">
               <div class="tags-widget">
@@ -84,3 +86,23 @@
     <%end%>
    </div>
  </div>
+
+
+
+<div id="comments">
+  <div>
+   <h2><%= @review.title %><h2>
+  </div>
+  <div>
+    <%= @review.content %>
+  </div>
+  
+
+</div>
+
+<script>
+<% #pre_bookmark = @review.bookmarks.find {|bookmark| bookmark.user_id == current_user.id} %>
+  $("#bookmark_button").on("click", function(event) {
+    //event.preventDefault();
+});
+</script>

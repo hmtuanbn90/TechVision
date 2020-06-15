@@ -14,11 +14,11 @@
         <% if comment.user.present? %>
           <span class="timestamp">
           <i>Posted <%= time_ago_in_words(comment.created_at) %> ago.</i> </span>
-          <%= link_to 'edit', edit_review_comment_path(comment.review, comment), class: "btn btn-primary" %>
-          <%= link_to "delete", review_comment_path(comment.review, comment), method: :delete,
-                         data: { confirm: "You sure?" }, class: "btn btn-danger" %><hr><br><br>
-        <% end %>
-      </div>
+          <%= link_to t("index.edit"), edit_review_comment_path(comment.review, comment), class: "btn btn-primary" %>
+          <%= link_to t("index.delete"), review_comment_path(comment.review, comment), method: :delete,
+                         data: { confirm: t("index.You sure?") }, class: "btn btn-danger" %><hr><br><br>
+      <% end %>
+    <% end %>
     <% end %>
   <% end%>
 </div>

@@ -1,5 +1,4 @@
 class Review < ApplicationRecord
-
   belongs_to :user
   belongs_to :topic
   has_many :likes, dependent: :destroy
@@ -7,6 +6,8 @@ class Review < ApplicationRecord
   has_many :hashtag_details, dependent: :destroy
   has_many :hashtags, through: :hashtag_details
   has_many  :comments, dependent: :destroy
+  has_many  :bookmarks, dependent: :destroy
+  scope :all_review, -> { order created_at: :desc }
   scope :hot, -> {where(hot: true).order(created_at: :desc).limit(2)}
   scope :reviewNew, -> {order(created_at: :desc).limit(11)}
   scope :searchReview, ->(title){select(:title, :id).where("title like ?",
@@ -27,16 +28,6 @@ class Review < ApplicationRecord
   scope :all_appended_false, -> { where appended: false }
   default_scope -> { order created_at: :desc }
 	validates :user_id, presence: true
-	validates :content, presence: true, length: { maximum: 5000 }
-  def bookmark(other_user)
-    bookmarks << other_user
-  end
-
-  def deletebookmark(other_user)
-    bookmarks.delete(other_user)
-  end
-
-  def bookmark?(other_user)
-    bookmarks.include?(other_user)
-  end
+	validates :content, presence: true, length: { maximum: 5000 }  
 end
+

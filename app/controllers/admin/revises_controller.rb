@@ -1,4 +1,5 @@
-class RevisesController < ApplicationControlle
+class Admin::RevisesController < Admin::BaseController
+
   def index
     @reviews = Review.all_appended_false
   end
@@ -16,8 +17,8 @@ class RevisesController < ApplicationControlle
     if
       @review = Review.find(params[:id])
       @review.update_attributes appended: true
-      flash[:success] = "Request is accepted"
-      redirect_to revises_path
+      flash[:success] = t("index.Request is accepted")
+      redirect_to admin_revises_path
     else
       flas[:success] = "Somethings went wrong"
       redirect_to revises_path
@@ -27,6 +28,6 @@ class RevisesController < ApplicationControlle
   def destroy
     @review = Review.find params[:id]
     @review.destroy
-    flash[:success] = "Review Deleted!"
-    redirect_to revises_path
+    flash[:success] = t("index.Review Deleted!")
+    redirect_to admin_revises_path
   end
