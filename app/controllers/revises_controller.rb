@@ -1,6 +1,6 @@
 class RevisesController < ApplicationControlle
   def index
-    @reviews = Review.where(appended: false)
+    @reviews = Review.all_appended_false
   end
 
   def show
@@ -13,11 +13,16 @@ class RevisesController < ApplicationControlle
   end
 
   def edit
-    @review = Review.find params[:id]
-    @review.update_attributes appended: true
-    flash[:success] = "Request is accepted"
-    redirect_to revises_path
+    if
+      @review = Review.find(params[:id])
+      @review.update_attributes appended: true
+      flash[:success] = "Request is accepted"
+      redirect_to revises_path
+    else
+      flas[:success] = "Somethings went wrong"
+      redirect_to revises_path
     end
+  end
 
   def destroy
     @review = Review.find params[:id]
@@ -25,5 +30,3 @@ class RevisesController < ApplicationControlle
     flash[:success] = "Review Deleted!"
     redirect_to revises_path
   end
-
-end

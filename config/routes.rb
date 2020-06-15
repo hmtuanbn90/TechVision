@@ -14,17 +14,19 @@ Rails.application.routes.draw do
     get '/login', to: 'sessions#new'
     post '/login', to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
-  resources :users
-  resources :revises
-  resources :hashtags
-  resources :bookmarks
+    resources :users
+    resources :revises
+    resources :hashtags
+    resources :bookmarks
 
-  resources :reviews do
-    resources :comments, only: [:create, :edit, :destroy]
-  end
+    resources :reviews do
+      resources :likes
+      resources :comments, only: [:create, :edit, :destroy]
+    end
 
-  namespace :admin do
+    namespace :admin do
       resources :reviews
+
     end
   end
 end

@@ -30,8 +30,19 @@
 								<figure class="figure-img">
 									<%=  image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "img-responsive", alt: "blog-post.html")%>
 								</figure>
-
-								<%= @review.content.html_safe %>
+								<%= @review.content.html_safe %> <br><br><br>
+								<section class="stats">
+						        <p id = "like_count"><%= @review.likes.count %> <%= (@review.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+                    <p id="abc">
+						        <%= render 'form_like' %>
+						        </p>
+						        <div
+                      class="fb-share-button"
+                      data-href="http://localhost:3000/reviews/"
+                      data-layout="box_count" data-size="small">
+                      <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Freviews%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a>
+                    </div>
+						    </section>
 						<!-- /author -->
 						<div class="aside-widget">
               <div class="tags-widget">
@@ -50,13 +61,8 @@
 							<%= link_to (t ".Delete"), @review, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %><br>
 						</div>
 					</div>
-
-
-
 			<div id="comments">
-			  <div>
-			  	<%= render "comments/comments" %>
-			  </div>
+			  <%= render "comments/comments" %>
 			</div>
 		</div>
 	</div>
@@ -79,6 +85,3 @@
     <%end%>
    </div>
  </div>
-
-
-
