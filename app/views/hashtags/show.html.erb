@@ -5,8 +5,8 @@
       <span class="finter-date">Hashtag</span>
       <div>
         <ul>
-          <% if !@hashtagAlls.nil? %>
-            <%@hashtagAlls.each do |hashtagAll|%>
+          <% if !@hashtagAll.nil? %>
+            <%@hashtagAll.each do |hashtagAll|%>
               <li class=" li-hashtag"><%=link_to hashtagAll.name, hashtag_path(hashtagAll) %></li>
             <% end %>
           <% end %>
@@ -31,10 +31,11 @@
             <a href="#"><img class="post-img" alt="blog-post.html" src="/assets/5030401_cover_Xiaomi_Redmi_10X_tinhte-481141e096ce79f4291a4d2fc9fdd29ca4c964ce5aaf37b0aa1b2c478281229b.jpg"></a>
             <div class="post-body">
               <div class="post-meta">
-                <a class="post-category cat-2" href="#"><%=review.topic.name%></a>
+                <%= link_to review.topic.name ,review_path(review) %>
                 <span class="post-date"><%=review.created_at%></span>
               </div>
-              <h3 class="post-title"><a href="blog-post.html"><%=review.title%></a></h3>
+              <h3 class="post-title">
+                <%= link_to review.title ,review_path(review) %><</h3>
               <p><%=review.about%></p>
             </div>
           </div>

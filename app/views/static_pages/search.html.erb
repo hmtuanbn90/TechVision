@@ -5,8 +5,8 @@
       <span class="finter-date">Hashtag</span>
       <div>
         <ul>
-          <% if !@hashtagAlls.nil? %>
-            <%@hashtagAlls.each do |hashtagAll|%>
+          <% if !@hashtagAll.nil? %>
+            <%@hashtagAll.each do |hashtagAll|%>
               <li class=" li-hashtag"><%=link_to hashtagAll.name, hashtag_path(hashtagAll) %></li>
             <% end %>
           <% end %>
@@ -19,27 +19,27 @@
   <div class="row">
     <div class="col-md-12">
       <div class="section-title">
-        <h2>Có <%= @results.size %> kết quả cho từ khóa "<%= @parameter%>" </h2>
+        <h2>Có <%= @reviews.size %> kết quả cho từ khóa "<%= @parameter%>" </h2>
       </div>
     </div>
     <!-- post -->
-    <% if !@results.empty? %>
-      <% @results.each do |result| %>
+    <% if !@reviews.empty? %>
+      <% @reviews.each do |review| %>
         <div class="col-md-12">
           <div class="post post-row">
-            <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html") ,review_path(result)%>
+            <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html") ,review_path(review)%>
             <div class="post-body">
               <div class="post-meta">
-                <a class="post-category cat-2" href="#"><%=result.topic.name%></a>
-                <span class="post-date"><%=result.created_at%></span>
+                <%=link_to review.topic.name,review_path(review) %>
+                <span class="post-date"><%=review.created_at%></span>
               </div>
-              <h3 class="post-title"><%= link_to result.title ,review_path(result) %></h3>
-              <p><%=result.about%></p>
+              <h3 class="post-title"><%= link_to review.title ,review_path(review) %></h3>
+              <p><%=review.about%></p>
             </div>
           </div>
         </div>
       <%end%>
-   <%= will_paginate @results %>
+   <%= will_paginate @reviews %>
     <%end%>
     <!-- /post -->
   </div>
