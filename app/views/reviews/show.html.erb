@@ -38,7 +38,7 @@
                 <ul>
 								<% if !@hashtags.empty? %>
       						<% @hashtags.each do |hashtag| %>
-										<li><%=link_to hashtag.name,hashtag_path(hashtag) %></li>
+										<li><%=link_to hashtag.name, hashtag_path(hashtag) %></li>
 										<% end %>
 									<% end %>
 								</ul>
@@ -69,10 +69,10 @@
     <% if !@reviewFilter.nil? %>
       <%  @reviewFilter.each do | reviewFilter| %>
         <div class="post post-widget">
-          <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html") ,review_path(reviewFilter[0])%>
+          <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html") ,review_path(reviewFilter)%>
           <div class="post-body">
-            <h3 class="post-title"><%= link_to reviewFilter[0].title ,review_path(reviewFilter[0])%></h3>
-            <p><%= reviewFilter[0].about%></p>
+            <h3 class="post-title"><%= link_to reviewFilter.title ,review_path(reviewFilter)%></h3>
+            <p><%= reviewFilter.about%></p>
           </div>
         </div>
       <%end%>
@@ -82,16 +82,3 @@
 
 
 
-<div id="comments">
-  <div>
-   <h2><%= @review.title %><h2>
-  </div>
-  <div>
-    <%= @review.content %>
-  </div>
-  <div>
-  <%= render "comments/comments" %>
-  </div>
-
-
-</div>

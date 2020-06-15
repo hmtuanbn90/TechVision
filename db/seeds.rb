@@ -31,8 +31,6 @@ Review.create(title:"Xiaomi ra mat mibad 9",user_id:1,content:"Ngoài Twitter ha
 Review.create(title:"Xiaomi ra mat mibad 10",user_id:1,content:"Ngoài Twitter hay Instagram thì nhiều dịch vụ khác cũng tích hợp hashtag vào hệ thống của mình, ví dụ như trong hệ thống đăng lời bình luận của YouTube hay Google+. Những công cụ tìm kiếm theo thời gian thực như Google Real-Time Search (một tính năng của Google Search) sẽ tự theo dõi một hashtag do bạn chỉ định để liên tục hiển thị những bài post được gắn tag đó.",about:"hashtag còn được cộng đồng mạng sử dụng như một biện pháp để giải bày một trạng thái nào đó liên quan đến thông điệp", hot:true, view:202,topic_id:2, appended: true )
 Review.create(title:"Xiaomi ra mat mibad 11",user_id:1,content:"Ngoài Twitter hay Instagram thì nhiều dịch vụ khác cũng tích hợp hashtag vào hệ thống của mình, ví dụ như trong hệ thống đăng lời bình luận của YouTube hay Google+. Những công cụ tìm kiếm theo thời gian thực như Google Real-Time Search (một tính năng của Google Search) sẽ tự theo dõi một hashtag do bạn chỉ định để liên tục hiển thị những bài post được gắn tag đó.",about:"hashtag còn được cộng đồng mạng sử dụng như một biện pháp để giải bày một trạng thái nào đó liên quan đến thông điệp", hot:true, view:202,topic_id:2, appended: true )
 
-
-
 Hashtag.create(name:"#nokia")
 Hashtag.create(name:"#sony")
 Hashtag.create(name:"#xiaomi")
@@ -45,9 +43,6 @@ HashtagDetail.create(hashtag_id:4 , review_id:3)
 HashtagDetail.create(hashtag_id:1 , review_id:3)
 HashtagDetail.create(hashtag_id:2 , review_id:4)
 HashtagDetail.create(hashtag_id:3 , review_id:5)
-
-
-
 
 Like.create(user_id:1 , review_id:3)
 Like.create(user_id:2 , review_id:1)

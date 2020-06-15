@@ -1,5 +1,4 @@
 class BookmarksController < ApplicationController
-
 	before_action :logged_in_user, only: [:create, :destroy]
 	before_action :correct_user, only: :destroy
 	before_action :find_review, only: :create
@@ -15,8 +14,6 @@ class BookmarksController < ApplicationController
 			redirect_to bookmarks_path
 		end
 	end
-
-
 
 	def destroy
 		@bookmark = Bookmark.find(params[:id])
