@@ -8,9 +8,10 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    @user = User.find params[:id]
     @bookmark = Bookmark.new
     @review = Review.find params[:id]
-    @comments = Comment.new
+    @comments = @review.comments.paginate(page: params[:page])
     @comment = @review.comments.build
     @hashtags = @review.hashtags
     @reviewFilter = Review.reviewHashtag(params[:id])
