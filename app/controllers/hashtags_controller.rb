@@ -1,6 +1,6 @@
 class HashtagsController < ApplicationController
   def index
-    @hashtags = Hashtag.searchHashtag(params[:name])
+    @hashtags = Hashtag.searchHashtag params[:name]
     respond_to do |format|
       format.json {
         render json: @hashtags
