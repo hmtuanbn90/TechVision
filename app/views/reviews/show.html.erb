@@ -33,7 +33,7 @@
 								<%= @review.content.html_safe %> <br><br><br>
 								<section class="stats">
 						        <p id = "like_count"><%= @review.likes.count %> <%= (@review.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-                    <p id="abc">
+                    <p id = "form_like">
 						        <%= render 'form_like' %>
 						        </p>
 						        <div
@@ -41,6 +41,9 @@
                       data-href="http://localhost:3000/reviews/"
                       data-layout="box_count" data-size="small">
                       <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Freviews%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a>
+                    </div>
+                    <div id="comments">
+                      <%= render "comments/comments" %>
                     </div>
 						    </section>
 						<!-- /author -->
@@ -61,9 +64,7 @@
 							<%= link_to (t ".Delete"), @review, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %><br>
 						</div>
 					</div>
-			<div id="comments">
-			  <%= render "comments/comments" %>
-			</div>
+
 		</div>
 	</div>
 <div class="col-md-4">

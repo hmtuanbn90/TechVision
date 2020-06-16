@@ -1,23 +1,25 @@
 <div class="panel panel-primary"style ="width :67%;margin-left:8%">
-  <div class="panel-heading">
-    <% if !@comments.nil? %>
-      <span>0 <%= t".comment" %></span>
-    <% else %>
-      <span><%=  @comments.size %>Comment</span>
-
-  <br>
+  <div class="panel-heading ">
+  <% if @comments.nil? %>
+    <span>0 <%= t".comment" %></span>
+  <% else %>
+    <%= @review.comments.count %>
+    <%= (@review.comments.count) == 1 ? 'Comment' : 'Comments'%>
+    <%= render "comments/form_comment" %>
+  </div>
     <% @comments.each do |comment| %>
-         <% if comment.user.present? %>
-        <span><%= @user.name %></span>
+      <div id = "comments">
+        <span><%= @user.name %>:</span>
         <span><%= comment.content %></span><br>
-        <span class="timestamp">
+        <% if comment.user.present? %>
+          <span class="timestamp">
           <i>Posted <%= time_ago_in_words(comment.created_at) %> ago.</i> </span>
           <%= link_to 'edit', edit_review_comment_path(comment.review, comment), class: "btn btn-primary" %>
           <%= link_to "delete", review_comment_path(comment.review, comment), method: :delete,
                          data: { confirm: "You sure?" }, class: "btn btn-danger" %><hr><br><br>
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
-    <% end %>
-   </div>
-    <%= render "comments/form_comment" %>
+  <% end%>
 </div>
+
