@@ -7,13 +7,15 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @user = User.find params[:id]
-    @bookmark = Bookmark.new
-    @review = Review.find params[:id]
-    @comments = @review.comments.paginate(page: params[:page])
-    @comment = @review.comments.build
-    @hashtags = @review.hashtags
-    @reviewFilter = Review.reviewHashtag(params[:id])
+    if current_user
+      @user = User.find params[:id]
+    end
+      @bookmark = Bookmark.new
+      @review = Review.find params[:id]
+      @comments = @review.comments.paginate(page: params[:page])
+      @comment = @review.comments.build
+      @hashtags = @review.hashtags
+      @reviewFilter = Review.reviewHashtag(params[:id])
     unless @review.appended
       redirect_to root_path
     end
@@ -58,7 +60,7 @@ class ReviewsController < ApplicationController
   end
 
   private
-  
+
   def review_params
     params.require(:review).permit :content, :title, :topic_id, hashtag_ids:[]
   end

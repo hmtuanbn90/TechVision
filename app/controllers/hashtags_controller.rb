@@ -1,5 +1,4 @@
 class HashtagsController < ApplicationController
-
   def index
     @hashtags = Hashtag.searchHashtag(params[:name])
     respond_to do |format|
