@@ -7,7 +7,9 @@
         <ul>
           <% if !@hashtagAll.nil? %>
             <%@hashtagAll.each do |hashtagAll|%>
-              <li class=" li-hashtag"><%=link_to hashtagAll.name, hashtag_path(hashtagAll) %></li>
+              <li class=" li-hashtag">
+                <%=link_to hashtagAll.name, hashtag_path(hashtagAll) %>
+              </li>
             <% end %>
           <% end %>
         </ul>
@@ -40,7 +42,7 @@
           </div>
         </div>
       <%end%>
-   <%= will_paginate @reviews %>
+      <%= will_paginate @reviews %>
     <%end%>
     <!-- /post -->
   </div>

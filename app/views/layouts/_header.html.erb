@@ -20,7 +20,6 @@
               <li class=""><a href="category.html">Nokia</a></li>
             </ul>
             <!-- /nav -->
-
             <!-- search & aside toggle -->
             <div class="search col-md-4">
               <%= form_tag(search_page_path, :method => "get") do %>
@@ -35,6 +34,7 @@
                     <ul class="dropdown-menu">
                       <li><%= link_to "English", locale:"en" %></li>
                       <li><%= link_to "Vietnamese", locale:"vi" %></li>
+                      <li><%= link_to "Japanese", locale:"ja" %></li>
                     </ul>
                 </li>
 
@@ -51,25 +51,25 @@
           <!-- nav -->
           <div class="section-row">
             <ul class="nav-aside-menu">
-              <li class="nav-li"><a href="index.html"><%= t("index.Home") %></a></li>
-              <li class="nav-li"><a href="about.html"><%= t("index.About Us") %></a></li>
-              <li class="nav-li"><a href="#"><%= t("index.Contacts") %></a></li>
+              <li class="nav-li"><a href="index.html">Home</a></li>
+              <li class="nav-li"><a href="about.html">About Us</a></li>
+              <li class="nav-li"><a href="#">Contacts</a></li>
               <% if logged_in? %>
-                <li class="nav-li"><%= link_to t("index.Users"), users_path %></li>
+                <li class="nav-li"><%= link_to "Users", users_path %></li>
                   <li class="dropdown nav-li">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <%= t("index.Account") %> <b class="caret"></b>
+                      Account <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                      <li class="nav-li"><%= link_to t("index.Profile"), current_user %></li>
-                      <li class="nav-li"><%= link_to t("index.Settings"), edit_user_path(current_user) %></li>
+                      <li class="nav-li"><%= link_to "Profile", current_user %></li>
+                      <li class="nav-li"><%= link_to "Settings", edit_user_path(current_user) %></li>
                       <li class="nav-li">
-                        <%= link_to t("index.Log out"), logout_path, method: :delete %>
+                        <%= link_to "Log out", logout_path, method: :delete %>
                       </li>
                     </ul>
                   </li>
                <% else %>
-                 <li class="nav-li"><%= link_to t("index.Log in"), login_path %></li>
+                 <li class="nav-li"><%= link_to "Log in", login_path %></li>
                <% end %>
             </ul>
           </div>
