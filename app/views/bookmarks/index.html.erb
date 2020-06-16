@@ -7,7 +7,7 @@
   <span><%= link_to bookmark.review.title, review_path(bookmark.review.id) %></span>
 </div>
 <div>
-  <%= link_to "Delete", bookmark, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
+  <%= link_to t("index.Delete"), [bookmark.review, bookmark], method: :delete, data: { confirm: t("index.You sure?") }, class: "btn btn-danger" %>
 </div>
 <br>
 

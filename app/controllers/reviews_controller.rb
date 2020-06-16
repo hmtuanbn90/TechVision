@@ -1,10 +1,9 @@
 class ReviewsController < ApplicationController
-  before_action :find_topic, only: :create
 	before_action :logged_in_user, only: [:create, :destroy, :edit]
 	before_action :correct_user, only: :destroy
 
   def index
-    @reviews = Review.order("created_at DESC")
+    @reviews = Review.all_review
   end
 
   def show
@@ -25,16 +24,16 @@ class ReviewsController < ApplicationController
     @topics = Topic.all
   end
 
-	def create
-		@review = current_user.reviews.build(review_params)
-		if @review.save
-			flash[:success] = "Review created!"
-			redirect_to @review
-		else
-			@topics = Topic.all
-			render :new
-		end
-	end
+  def create
+    @review = current_user.reviews.build(review_params)
+    if @review.save
+      flash[:success] = t("index.Review created!")
+      redirect_to @review
+    else
+      @topics = Topic.all
+      render :new
+    end
+  end
 
   def edit
     @review = Review.find params[:id]
@@ -58,30 +57,14 @@ class ReviewsController < ApplicationController
     redirect_to @review
   end
 
-  def bookmark
-    @review = Review.find params[:id]
-    @reviews = @review.bookmark
-    render :show
-  end
-
   private
+  
   def review_params
     params.require(:review).permit :content, :title, :topic_id, hashtag_ids:[]
   end
 
-	private
-
-	def review_params
-		params.require(:review).permit(:content, :title, :topic_id, hashtag_ids:[])
-	end
-
-	def find_topic
-		@topic = Topic.find_by id: review_params[:topic_id]
-	end
-
-	def correct_user
-		@review = current_user.reviews.find_by(id: params[:id])
-		redirect_to root_url if @review.nil?
-	end
-
+  def correct_user
+    @review = current_user.reviews.find_by(id: params[:id])
+    redirect_to root_url if @review.nil?
+  end
 end

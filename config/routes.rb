@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get 'sessions/new'
-  scope "(:locale)", locale: /en|vi|ja/ do
+  scope "(:locale)", locale: /en|vi/ do
     mount Ckeditor::Engine => '/ckeditor'
     resources :magazines
     get 'users/new'
@@ -15,18 +15,15 @@ Rails.application.routes.draw do
     post '/login', to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
     resources :users
-    resources :revises
     resources :hashtags
-    resources :bookmarks
-
     resources :reviews do
       resources :likes
+      resources :bookmarks
       resources :comments, only: [:create, :edit, :destroy]
     end
 
     namespace :admin do
-      resources :reviews
-
+      resources :revises
     end
   end
 end
