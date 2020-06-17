@@ -31,3 +31,4 @@ class Admin::RevisesController < Admin::BaseController
     flash[:success] = t("index.Review Deleted!")
     redirect_to admin_revises_path
   end
+end

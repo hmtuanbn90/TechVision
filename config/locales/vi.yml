@@ -23,6 +23,7 @@ vi:
       Request is accepted: "Chấp nhận!"
       Review Deleted!: "Xoá thành công!"
       Please log in: "Xin hãy đăng nhập!"
+      bookmark: "Bookmark"
       Bookmark saved!: "Lưu thành công!"
       Bookmark deleted!: "Xoá thành công!"
       Created: "Tạo thành công!"
@@ -62,4 +63,14 @@ vi:
       passwordc: "Xác nhận mật khẩu"
       Save changes: "Lưu thay đổi"
       Account: "Tài khoản"
+      Empty field!: "Rỗng"
+      Title: "Tiêu đề"
+      Have: "Có"
+      reviews: "bài viết"
+      All comment: "Tất cả bình luận"
+      New Review: "Bài viết mới"
+      posted: "Đăng"
+      ago: "trước"
+      bailienquan: "Bài viết liên quan"
+
 

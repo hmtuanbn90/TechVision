@@ -1,10 +1,10 @@
 class StaticPagesController < ApplicationController
   def home
-    @review_new = Review.hot
-    @recentPosts = Review.reviewNew
+    @review_new = Review.approval.hot
+    @recentPosts = Review.approval.reviewNew
     @topicNumbers = Topic.all
  # scrop
-    @reviewTops = Review.topLikes1
+    @reviewTops = Review.topLikes1.approval
     @hashtags = Hashtag.all
   end
 
@@ -18,7 +18,7 @@ class StaticPagesController < ApplicationController
       }
     end
     elsif params[:search].blank?
-      redirect_to(root_path, alert: "Empty field!")
+      redirect_to(root_path, alert: t("index.Empty field!"))
     else
       parameter = params[:search].downcase
       @parameter = params[:search].downcase

@@ -21,7 +21,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="section-title">
-        <h2>Co <%= @reviews.count %> bai viet thuoc <%= @hashtag.name %> </h2>
+        <h2><%= t("index.Have") %><%= @reviews.count %><%= t("index.reviews") %><%= @hashtag.name %> </h2>
       </div>
     </div>
     <!-- post -->
@@ -29,7 +29,7 @@
       <% @reviews.each do |review| %>
         <div class="col-md-12">
           <div class="post post-row">
-            <a href="#"><img class="post-img" alt="blog-post.html" src="/assets/5030401_cover_Xiaomi_Redmi_10X_tinhte-481141e096ce79f4291a4d2fc9fdd29ca4c964ce5aaf37b0aa1b2c478281229b.jpg"></a>
+            <%= link_to image_tag review.image, class: "post-img",review_path(review) if review.image.attached? %>ß
             <div class="post-body">
               <div class="post-meta">
                 <%= link_to review.topic.name ,review_path(review) %>

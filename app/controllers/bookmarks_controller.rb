@@ -34,7 +34,7 @@ class BookmarksController < ApplicationController
   end
 
   def correct_user
-    @bookmark = current_user.bookmarks.find_by id: params[:id]
+    @bookmark = current_user.bookmarks.find params[:id]
     redirect_to root_url if @bookmark.nil?
   end
 end

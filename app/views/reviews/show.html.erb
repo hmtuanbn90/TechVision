@@ -1,10 +1,10 @@
 <div id="post-header" class="page-header">
-	<div class="background-img" style="background-image: url('/assets/post-page.jpg');"></div>
+	<div class="background-img" style="background-image: url('/assets/about-1.jpg')";></div>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10">
 				<div class="post-meta">
-					<a class="post-category cat-2" href="category.html"><%= t ".Topic" %></a>
+					<%=link_to @review.topic.name, "#", class: "post-category cat-2" %>
 					<span class="post-date"><%= @review.created_at %></span>
 				</div>
 				<h1><%= @review.title.html_safe %></h1>
@@ -29,7 +29,7 @@
 						<div class="section-row sticky-container">
 							<div class="main-post">
 								<figure class="figure-img">
-									<%=  image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "img-responsive", alt: "blog-post.html")%>
+									<%= image_tag @review.image, class: "img-responsive" if @review.image.attached? %>
 								</figure>
 
 								<%= @review.content.html_safe %>
@@ -68,7 +68,7 @@
 						<div>
 							<%= link_to (t ".New Review"), new_review_path, class: "btn btn-primary" %><br>
 							<%= link_to (t ".Edit Review"), edit_review_path(@review), class: "btn btn-primary" %><br>
-							<%= link_to (t ".Delete"), @review, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %><br>
+							<%= link_to (t ".Delete"), @review, method: :delete, data: { confirm: t("index.You sure?") }, class: "btn btn-danger" %><br>
 						</div>
 					</div>
 		</div>
@@ -77,15 +77,15 @@
             <!-- post widget -->
   <div class="aside-widget">
     <div class="section-title">
-      <h2>bai lien quan</h2>
+      <h2><%= t("index.bailienquan") %></h2>
     </div>
     <% if !@reviewFilter.nil? %>
-      <%  @reviewFilter.each do | reviewFilter| %>
+      <%  @reviewFilter.each do |review| %>
         <div class="post post-widget">
-          <%= link_to image_tag("5030401_cover_Xiaomi_Redmi_10X_tinhte.jpg", class: "post-img", alt: "blog-post.html") ,review_path(reviewFilter)%>
+          <%= link_to image_tag(review.image, class: "post-img"),review_path(review) if review.image.attached? %>
           <div class="post-body">
-            <h3 class="post-title"><%= link_to reviewFilter.title ,review_path(reviewFilter)%></h3>
-            <p><%= reviewFilter.about%></p>
+            <h3 class="post-title"><%= link_to review.title ,review_path(review)%></h3>
+            <p><%= review.about%></p>
           </div>
         </div>
       <%end%>
@@ -99,5 +99,14 @@
 
   $("#bookmark_button").on("click", function(event) {
     //event.preventDefault();
+});
+</script>
+
+<script type="text/javascript">
+$("#micropost_image").bind("change", function() {
+var size_in_megabytes = this.files[0].size/1024/1024;
+if (size_in_megabytes > 5) {
+alert("Maximum file size is 5MB. Please choose a smaller file.");
+}
 });
 </script>
