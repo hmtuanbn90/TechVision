@@ -9,7 +9,6 @@ class BookmarksController < ApplicationController
   def create
     @bookmark = current_user.bookmarks.build bookmark_params
     if @bookmark.save
-      #flash[:success] = t("index.Bookmark saved!")
       respond_to do |format|
       format.html { redirect_to @review }
       format.js
@@ -30,7 +29,7 @@ class BookmarksController < ApplicationController
   private
 
   def bookmark_params
-    params.require(:bookmark).permit(:review_id)
+    params.require(:bookmark).permit :review_id
   end
 
   def correct_user

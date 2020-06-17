@@ -21,7 +21,7 @@
 				<div class="row">
 					<!-- Post content -->
 					<div class="col-md-8">
-            <% if current_user %>
+            <% if logged_in? %>
 						<div id="bookmark_form">
 							<%= render 'reviews/bookmark_form' %>
 						</div>
@@ -31,21 +31,20 @@
 								<figure class="figure-img">
 									<%= image_tag @review.image, class: "img-responsive" if @review.image.attached? %>
 								</figure>
-
 								<%= @review.content.html_safe %>
 								<section class="stats">
 						        <p id = "like_count">
                       <%= @review.likes.count %>
                       <%= (@review.likes.count) == 1 ? 'Like' : 'Likes'%>
                     </p>
-                    <% if current_user %>
+                    <% if logged_in? %>
                     <p id = "form_like">
 						        <%= render 'form_like' %>
 						        </p>
                     <% end %>
 						        <div
                       class="fb-share-button"
-                      data-href="http://localhost:3000/reviews/"
+                      data-href="<%= review_url(@review.id) %>"
                       data-layout="box_count" data-size="small">
                       <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Freviews%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a>
                     </div>
@@ -67,8 +66,17 @@
 						</div>
 						<div>
 							<%= link_to (t ".New Review"), new_review_path, class: "btn btn-primary" %><br>
-							<%= link_to (t ".Edit Review"), edit_review_path(@review), class: "btn btn-primary" %><br>
-							<%= link_to (t ".Delete"), @review, method: :delete, data: { confirm: t("index.You sure?") }, class: "btn btn-danger" %><br>
+              <% if logged_in? %>
+                <% if @review.user_id == current_user.id %>
+							    <%= link_to (t ".Edit Review"), edit_review_path(@review),
+                                                 class: "btn btn-primary" %><br>
+							    <%= link_to (t ".Delete"), @review,method: :delete,
+                  data: { confirm: t("index.You sure?") },class: "btn btn-danger" %><br>
+                <% else current_user.admin? %>
+                  <%= link_to (t ".Delete"), @review, method: :delete,
+                   data: { confirm: "You sure?" }, class: "btn btn-danger" %>
+                <% end %>
+              <% end %>
 						</div>
 					</div>
 		</div>
@@ -92,9 +100,6 @@
     <%end%>
   </div>
 </div>
-
-
-
 <script>
 
   $("#bookmark_button").on("click", function(event) {

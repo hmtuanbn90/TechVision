@@ -4,21 +4,28 @@
     <span>0 <%= t".comment" %></span>
   <% else %>
     <%= @review.comments.count %>
-    <%= (@review.comments.count) == 1 ? 'Comment' : 'Comments'%>
+    <%= @review.comments.count == 1 ? 'Comment' : 'Comments'%>
     <%= render "comments/form_comment" %>
   </div>
     <% @comments.each do |comment| %>
       <div id = "comments">
         <span><%= comment.user.name %>:</span>
         <span><%= comment.content %></span><br>
-        <% if comment.user.present? %>
           <span class="timestamp">
-          <i><%= t("index.posted") %><%= time_ago_in_words(comment.created_at) %><%= t("index.ago") %></i> </span>
-          <%= link_to t("index.edit"), edit_review_comment_path(comment.review, comment), class: "btn btn-primary" %>
-          <%= link_to t("index.Delete"), review_comment_path(comment.review, comment), method: :delete,
-                         data: { confirm: t("index.You sure?") }, class: "btn btn-danger" %><hr><br><br>
-      <% end %>
+          <i><%= t("index.posted") %><%= time_ago_in_words(comment.created_at) %>
+            <%= t("index.ago") %></i>
+          </span>
+        <% if logged_in? %>
+          <% if comment.user_id == current_user.id %>
+            <%= link_to t("index.edit"), edit_review_comment_path(comment.review, comment),
+                                                     class: "btn btn-primary" %>
+            <%= link_to t("index.Delete"), review_comment_path(comment.review, comment),
+                       method: :delete, data: { confirm: t("index.You sure?") },
+                                                      class: "btn btn-danger" %>
+          <% end %><hr><br><br>
+        <% end %>
+      </div>
     <% end %>
   <% end%>
+<%= will_paginate @comments %>
 </div>
-

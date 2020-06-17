@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-
   def create
     @comment = current_user.comments.build comment_params
     respond_to do |format|
@@ -14,22 +13,21 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find(params[:id])
+    reviews = Review.all
+    @review = reviews.find params[:id]
+    @comment = current_user.comments
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find params[:id]
     @comment.destroy
     redirect_to @review if @comment.nil?
     flash[:success] = t("index.Comment deleted")
     redirect_to request.referrer || root_url
   end
 
-
   private
-
-    def comment_params
-      params.require(:comment).permit :content, :review_id, :user_id
-    end
-
+  def comment_params
+    params.require(:comment).permit :content, :review_id, :user_id
+  end
 end

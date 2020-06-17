@@ -3,20 +3,17 @@ class StaticPagesController < ApplicationController
     @review_new = Review.approval.hot
     @recentPosts = Review.approval.reviewNew
     @topicNumbers = Topic.all
- # scrop
     @reviewTops = Review.topLikes1.approval
     @hashtags = Hashtag.all
   end
 
   def search
-    @hashtagAll   = Hashtag.all
+    @hashtagAll = Hashtag.all
     if params[:title]
-    @reviews     = Review.searchReview(params[:title])
-    respond_to do |format|
-      format.json {
-        render json: @reviews
-      }
-    end
+      @reviews = Review.searchReview(params[:title])
+      respond_to do |format|
+        format.json {render json: @reviews}
+      end
     elsif params[:search].blank?
       redirect_to(root_path, alert: t("index.Empty field!"))
     else

@@ -1,5 +1,4 @@
 class Admin::RevisesController < Admin::BaseController
-
   def index
     @reviews = Review.all_appended_false
   end
@@ -10,19 +9,14 @@ class Admin::RevisesController < Admin::BaseController
     @bookmark = Bookmark.new
     @hashtags = @review.hashtags
     @comment = @review.comments.build
-    render "reviews/show"
+    render "admin/reviews/show"
   end
 
   def edit
-    if
-      @review = Review.find(params[:id])
-      @review.update_attributes appended: true
-      flash[:success] = t("index.Request is accepted")
-      redirect_to admin_revises_path
-    else
-      flas[:success] = "Somethings went wrong"
-      redirect_to revises_path
-    end
+    @review = Review.find(params[:id])
+    @review.update_attributes appended: true
+    flash[:success] = t("index.Request is accepted")
+    redirect_to admin_revises_path
   end
 
   def destroy
