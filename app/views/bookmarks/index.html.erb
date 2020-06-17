@@ -1,9 +1,9 @@
 <div class="container">
  <% @bookmarks.each do |bookmark| %>
 <div>
-  <b>Bookmarks:</b><br>
+  <b><%= t("index.bookmark") %></b><br>
   <span><%= bookmark.user.name %></span><br>
-  <b>Title:</b>
+  <b><%= t("index.Title") %></b>
   <span><%= link_to bookmark.review.title, review_path(bookmark.review.id) %></span>
 </div>
 <div>
