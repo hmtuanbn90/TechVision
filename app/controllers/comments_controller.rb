@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :logged_in_user, only: [:create, :destroy, :edit]
+
   def create
     @comment = current_user.comments.build comment_params
     respond_to do |format|
@@ -23,7 +25,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to @review if @comment.nil?
     flash[:success] = t("index.Comment deleted")
-    redirect_to request.referrer || root_url
+    redirect_to review_path
   end
 
   private

@@ -53,9 +53,10 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find params[:id]
+    @user = current_user
     @review.destroy
     flash[:success] = t("index.Review Deleted!")
-    redirect_to root_url
+    redirect_to @user
   end
 
   private

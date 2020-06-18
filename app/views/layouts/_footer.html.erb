@@ -2,67 +2,41 @@
 $('#myInput').autocomplete({
   source: function (request, response) {
     $.ajax({
-      url: "/search", // should be with '/'
+      url: "/search",
       data: { title: request.term },
       dataType: 'json',
       success: function (data) {
         response($.map(data, function (dataItem) {
-            return {data: dataItem.id, value: dataItem.title };
+          return {data: dataItem.id, value: dataItem.title };
         }));
       },
     });
   },
    select: function(event, ui) {
-             window.location.assign('http://localhost:3000/reviews/' +ui.item.data);
+         window.location.assign('http://localhost:3000/reviews/' +ui.item.data);
         },
 });
-
-    </script>
+</script>
 <footer id="footer">
-      <!-- container -->
-      <div class="container">
-        <!-- row -->
-        <div class="row">
-          <div class="col-md-5">
-            <div class="footer-widget">
-              <div class="footer-logo">
-                <a href="index.html" class="logo"><!-- img src="./img/logo.png" alt=""> --></a>
-              </div>
-              <div class="footer-copyright">
-                <span>&copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
-              </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="footer-widget">
+          <div class="footer-logo">
           </div>
-
-          <div class="col-md-4">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.399300691599!2d105.78139095002409!3d21.01670319349806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454ab43c0c4db%3A0xdb6effebd6991106!2sKeangnam%20Hanoi%20Landmark%20Tower!5e0!3m2!1svi!2s!4v1591947315688!5m2!1svi!2s" width="350" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+          <div class="footer-copyright">
+            <span>&copy;Copyright &copy;
+              <script>document.write(new Date().getFullYear());</script>
+              All rights reserved | This template is made with
+              <i class="fa fa-heart-o" aria-hidden="true"></i> by
+              <a href="https://colorlib.com" target="_blank">Colorlib</a>
+            </span>
           </div>
-
-          <div class="col-md-3">
-            <div class="footer-widget">
-              <h3 class="footer-title">Join our Newsletter</h3>
-              <div class="footer-newsletter">
-                <form>
-                  <input class="input" type="email" name="newsletter" placeholder="Enter your email">
-                  <button class="newsletter-btn"><i class="fa fa-paper-plane"></i></button>
-                </form>
-              </div>
-              <ul class="footer-social">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-              </ul>
-            </div>
-          </div>
-
         </div>
-        <!-- /row -->
       </div>
-      <!-- /container -->
-    </footer>
-    <!-- /Footer -->
-
-    <!-- jQuery Plugins -->
+      <div class="col-md-4">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.399300691599!2d105.78139095002409!3d21.01670319349806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454ab43c0c4db%3A0xdb6effebd6991106!2sKeangnam%20Hanoi%20Landmark%20Tower!5e0!3m2!1svi!2s!4v1591947315688!5m2!1svi!2s" width="350" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+      </div>
+    </div>
+  </div>
+</footer>
