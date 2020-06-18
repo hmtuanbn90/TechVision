@@ -8,9 +8,9 @@
         <input type="text"  id="autocomplete" class="form-control" />
         <button class="btn btn-sm btn-primary">add</button>
       </div>
-<%= render "form" %>
-<script>
-      $('#autocomplete').autocomplete({
+      <%= render "form" %>
+      <script>
+        $('#autocomplete').autocomplete({
         source: function (request, response) {
           $.ajax({
             url: "/hashtags", // should be with '/'

@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
   before_action :set_locale
+  before_action :topic_name
+
+  def topic_name
+     @topics_name = Topic.all.limit(6)
+  end
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale

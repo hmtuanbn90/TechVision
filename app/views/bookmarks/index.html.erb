@@ -1,15 +1,18 @@
 <div class="container">
- <% @bookmarks.each do |bookmark| %>
-<div>
-  <b><%= t("index.bookmark") %></b><br>
-  <span><%= bookmark.user.name %></span><br>
-  <b><%= t("index.Title") %></b>
-  <span><%= link_to bookmark.review.title, review_path(bookmark.review.id) %></span>
-</div>
-<div>
-  <%= link_to t("index.Delete"), [bookmark.review, bookmark], method: :delete, data: { confirm: t("index.You sure?") }, class: "btn btn-danger" %>
-</div>
-<br>
-
-<% end %>
+  <% @bookmarks.each do |bookmark| %>
+    <div>
+      <b><%= t("index.bookmark") %></b><br>
+      <span>
+        <%= bookmark.user.name %>
+      </span><br>
+      <b><%= t("index.Title") %></b>
+      <span>
+        <%= link_to bookmark.review.title, review_path(bookmark.review.id) %>
+      </span>
+    </div>
+    <div>
+      <%= link_to t("index.Delete"), [bookmark.review, bookmark], method: :delete,
+            data: { confirm: t("index.You sure?") }, class: "btn btn-danger" %>
+    </div><br>
+  <% end %>
 </div>
