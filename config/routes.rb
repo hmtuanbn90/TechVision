@@ -19,9 +19,10 @@ Rails.application.routes.draw do
     end
     resources :hashtags
     resources :topics
+    resources :bookmarks
     resources :reviews do
       resources :likes
-      resources :bookmarks
+      resources :bookmarks, only: [:create]
       resources :comments, only: [:create, :edit, :destroy]
     end
 

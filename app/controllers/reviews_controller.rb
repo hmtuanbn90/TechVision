@@ -7,13 +7,14 @@ class ReviewsController < ApplicationController
   end
 
   def show
-      @review = Review.find params[:id]
-      @bookmark = Bookmark.new
-      @comments = @review.comments.paginate(
-        :page => params[:page], :per_page => 5)
-      @comment = @review.comments.build
-      @hashtags = @review.hashtags
-      @reviewFilter = Review.reviewHashtag params[:id]
+    @review = Review.find params[:id]
+    @bookmark = Bookmark.new
+    @bookmarked = Bookmark.bookmarked(@review.id, current_user.id).first
+    @comments = @review.comments.paginate(
+      page: params[:page], per_page: 5)
+    @comment = @review.comments.build
+    @hashtags = @review.hashtags
+    @reviewFilter = Review.reviewHashtag params[:id]
     unless @review.appended
       redirect_to root_path
     end

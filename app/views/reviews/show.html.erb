@@ -20,9 +20,15 @@
           <!-- Post content -->
         <div class="col-md-8">
           <% if logged_in? %>
-            <div id="bookmark_form">
-              <%= render 'reviews/bookmark_form' %>
-            </div>
+            <% if @bookmarked.nil? %>
+              <div id="bookmark_form">
+                <%= render "reviews/bookmark_form" %>
+              </div>
+              <% else %>
+              <div id="bookmarked_form">
+                <%= render "reviews/bookmarked_form" %>
+              </div>
+            <% end %>
           <% end %>
           <div class="section-row sticky-container">
             <div class="main-post">

@@ -3,4 +3,5 @@ class Bookmark < ApplicationRecord
 	belongs_to :user
 	validates :review_id, presence: true
 	validates :user_id, presence: true
+	scope :bookmarked, -> (review_id, user_id){where("review_id = ? AND user_id = ?", review_id, user_id)}
 end
