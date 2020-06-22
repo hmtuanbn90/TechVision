@@ -50,10 +50,10 @@
                       <% if @review.user_id == current_user.id %>
                         <%= link_to (t ".Edit Review"), edit_review_path(@review),
                                         class: "btn btn-primary css-edit" %><br>
-                      <%= link_to (t ".Delete"), @review,method: :delete,
+                        <%= link_to (t ".Delete"), @review,method: :delete,
                                   data: { confirm: t("index.You sure?") },
                                                   class: "btn btn-danger" %><br>
-                    <% else current_user.admin? %>
+                    <% elsif current_user.admin? %>
                       <%= link_to (t ".Delete"), @review, method: :delete,
                                   data: { confirm: t("index.You sure?") },
                                                       class: "btn btn-danger" %>

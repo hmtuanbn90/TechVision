@@ -46,7 +46,6 @@ en:
       Profile: "Profile"
       Settings: "Settings"
       Log out: "Log out"
-      Log in: "Log in"
       Read: "Read"
       Accept: "Accept"
       You sure?: "You sure?"
@@ -86,3 +85,11 @@ en:
       posts: "Posts"
       action: "Action"
       nameTopic: "Name topic:"
+      Log in: "Log in"
+
+  enums:
+    review:
+      appended:
+        waitting: "Waitting"
+        approved: "Approved"
+
