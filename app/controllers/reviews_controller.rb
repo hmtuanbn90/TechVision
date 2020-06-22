@@ -9,7 +9,9 @@ class ReviewsController < ApplicationController
   def show
     @review = Review.find params[:id]
     @bookmark = Bookmark.new
-    @bookmarked = Bookmark.bookmarked(@review.id, current_user.id).first
+    if logged_in?
+      @bookmarked = Bookmark.bookmarked(@review.id, current_user.id).first
+    end
     @comments = @review.comments.paginate(
       page: params[:page], per_page: 5)
     @comment = @review.comments.build
@@ -54,10 +56,10 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find params[:id]
-    @user = current_user
+    @user = @review.user_id
     @review.destroy
     flash[:success] = t("index.Review Deleted!")
-    redirect_to @user
+    redirect_to root_url
   end
 
   private

@@ -1,9 +1,6 @@
 <div>
-  <%= form_for [@review, @comment], :remote => true do |f| %>
+  <%= form_for [@review, @comment] do |f| %>
     <%= f.text_area :content, placeholder: t(:Comment_here, scope: "reviews.show") %>
-    <%= f.hidden_field :review_id, :value => @review.id %>
     <%= f.submit t(:Send, scope: "reviews.show"), class: "btn btn-primary" %>
   <% end %>
 </div>
-
-

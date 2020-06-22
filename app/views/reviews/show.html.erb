@@ -37,18 +37,18 @@
                  class: "img-responsive" if @review.image.attached? %>
               </figure>
               <%= @review.content.html_safe %>
-              <section class="stats">
-                <p id = "form_like"><%= render 'form_like' %></p>
-                <span>
-                  <p id = "like_count">
-                    <%= @review.likes.count %>
-                    <%= (@review.likes.count) == 1 ? 'Like' : 'Likes'%>
-                  </p>
-                </span>
-                <% if logged_in? %>
-                  <div>
-                    <% if @review.user_id == current_user.id %>
-                      <%= link_to (t ".Edit Review"), edit_review_path(@review),
+              <p id = "like_count">
+                <%= @review.likes.count %>
+                <%= (@review.likes.count) == 1 ? t("index.like") : t("index.likes") %>
+              </p>
+              <% if logged_in? %>
+                <section class="stats">
+                  <span>
+                    <p id = "form_like"><%= render 'form_like' %></p>
+                  </span>
+                    <div>
+                      <% if @review.user_id == current_user.id %>
+                        <%= link_to (t ".Edit Review"), edit_review_path(@review),
                                         class: "btn btn-primary css-edit" %><br>
                       <%= link_to (t ".Delete"), @review,method: :delete,
                                   data: { confirm: t("index.You sure?") },
@@ -67,7 +67,7 @@
                   <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Freviews%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
                 </div><br><br>
                 <div id="comments">
-                  <%= render "comments/comments" %>
+                  <%= render "form_comments" %>
                 </div>
               </section>
               <div class="aside-widget">

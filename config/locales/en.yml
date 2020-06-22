@@ -20,6 +20,7 @@ en:
 
   index:
       comment: "Comment"
+      comments: "Comments"
       Request is accepted: "Request is accepted!"
       Review Deleted!: "Review Deleted!"
       Please log in: "Please log in!"
@@ -72,3 +73,6 @@ en:
       posted: "Posted"
       ago: "ago"
       bailienquan: "Related post"
+      like: "Like"
+      likes: "Likes"
+      deletelike: "Delete Like"

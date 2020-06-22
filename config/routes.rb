@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources :reviews do
       resources :likes
       resources :bookmarks, only: [:create]
-      resources :comments, only: [:create, :edit, :destroy]
+      resources :comments
     end
 
     namespace :admin do
