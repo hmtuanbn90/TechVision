@@ -12,15 +12,16 @@ class Review < ApplicationRecord
   scope :approval, -> {where appended: true}
   scope :hot, -> {where(hot: true).order(created_at: :desc).limit(2)}
   scope :reviewNew, -> {order(created_at: :desc).limit(11)}
-  scope :searchReview, ->(title){select(:title, :id).where("title like ?","%#{title}%").limit(5)}
-  scope :searchListReview, ->(parameter){where("lower(title) LIKE :search",
-   search: "%#{parameter}%")}
-  scope :topLikes1, -> {Review.joins("INNER JOIN (select review_id, count(user_id)
-    as total from likes group by review_id order by total desc limit 5)
-     a ON reviews.id = a.review_id").order("total DESC")}
-  scope :reviewRelate, ->  (idReview){Review.joins("INNER JOIN (select hashtag_id,
-    from hashtag_details where review_id = #{idReview})
-     a ON reviews.id = a.review_id limit 5")}
+  scope :searchReview, ->(title){select(:title, :id).where("title like ?",
+   "%#{title}%").limit(5)}
+  scope :searchListReview, ->(parameter){where("lower(title) 
+    LIKE :search", search: "%#{parameter}%")}
+  scope :topLikes1, -> {Review.joins("INNER JOIN (select review_id,
+    count(user_id) as total from likes group by review_id order by 
+    total desc limit 5) a ON reviews.id = a.review_id").order("total DESC")}
+  scope :reviewRelate, ->  (idReview){Review.joins("INNER JOIN (select 
+    hashtag_id, from hashtag_details where review_id = #{idReview})
+    a ON reviews.id = a.review_id limit 5")}
   idHashtags = "select hashtag_id from hashtag_details where review_id = ?"
   idReviews = "select review_id from hashtag_details where hashtag_id in(#{idHashtags}) and review_id <> ?"
   scope :reviewHashtag, -> (id){Review.where("id in(#{idReviews})", id, id).limit(5)}

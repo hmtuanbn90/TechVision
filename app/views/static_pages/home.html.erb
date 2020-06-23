@@ -96,7 +96,7 @@
             <h2><%= t ".Most Read" %></h2>
           </div>
           <% if ! @reviewTops.empty? %>
-            <%  @reviewTops.each do | reviewTop| %>
+            <%  @reviewTops.each do |reviewTop| %>
               <div class="post post-widget">
                 <%= link_to image_tag(reviewTop.image, class: "post-img"),review_path(reviewTop) if reviewTop.image.attached? %>
                 <div class="post-body">
@@ -117,8 +117,12 @@
             <div class="category-widget">
               <ul>
                 <% if ! @topicNumbers.empty? %>
-                  <% @topicNumbers.each do | topicNumber| %>
-                    <li><%= link_to topicNumber.name, "#",class: "cat-#{topicNumber.id}" %> <span><%= topicNumber.reviews.size %></span></li>
+                  <% @topicNumbers.each do |topicNumber| %>
+                    <li><%= link_to topicNumber, class: "cat-#{topicNumber.id}" do %>
+                        <%= topicNumber.name %>
+                        <span><%= topicNumber.reviews.size %></span>
+                      <% end %>
+                    </li>
                   <% end %>
                 <% end %>
               </ul>
