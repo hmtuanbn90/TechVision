@@ -18,17 +18,17 @@ Rails.application.routes.draw do
       resources :reviews
     end
     resources :hashtags
-    resources :topics
     resources :bookmarks
+    resources :topics, only: [:show]
     resources :reviews do
       resources :likes
       resources :bookmarks, only: [:create]
       resources :comments
     end
-
     namespace :admin do
       resources :revises
       resources :reviews
-    end
+      resources :topics, only: [:create, :update, :destroy, :index]
+    end 
   end
 end

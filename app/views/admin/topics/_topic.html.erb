@@ -1,0 +1,22 @@
+<% if !topic.new_record? %>
+<tr>
+  <th scope="row"></th>
+  <td><%= topic.name %></td>
+  <td><%= time_ago_in_words(topic.created_at) %></td>
+  <td><%= topic.reviews.count %></td>
+  <td>
+    <ul class="list-inline m-0">
+      <li class="list-inline-item">
+       <%= link_to "#", class: "btn btn-success btn-sm rounded-0", type: "button" do %>
+          <i class="fa fa-edit"></i>
+         <% end %>
+      </li>
+      <li class="list-inline-item">
+        <%= link_to topic, method: :delete, data: { confirm: t("index.You sure?") }, remote: :true, class: "destroy-topic btn btn-danger btn-sm rounded-0", type: "button" do %>
+          <i class="fa fa-trash"></i>
+          <% end %>
+      </li>
+    </ul>
+  </td>
+</tr>
+<% end %>

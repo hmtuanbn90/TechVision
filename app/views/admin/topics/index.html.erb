@@ -1,0 +1,62 @@
+<div class="container top-topic">
+  <div class="row">
+    <div class="col-md-8 form-add">
+      <%= form_for [:admin, @topic], :remote => true do |f| %>
+        <%= t("index.nameTopic") %> <%= f.text_field :name %>
+      <%= f.submit class: "btn btn-sm btn-primary "%>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="container py-5 text-white">
+    <div class="row">
+      <div class="col-md-12 mx-auto">
+        <div class="card border-0 shadow">
+          <div class="card-body p-5">
+            <div class="table-responsive">
+              <table class="table m-0">
+                <thead>
+                  <tr>
+                    <th scope="col"><%= t("index.stt") %></th>
+                    <th scope="col"><%= t("index.name") %></th>
+                    <th scope="col"><%= t("index.date") %></th>
+                    <th scope="col"><%= t("index.posts") %></th>
+                    <th scope="col"><%= t("index.action") %></th>
+                  </tr>
+                </thead>
+                <tbody id="topics">
+                  <% if !@topics.nil? %>
+                    <% @topics.each_with_index do |topic, index| %>
+                     <tr id="topic-<%=topic.id%>">
+                       <th scope="row"><%= index+1%></th>
+                        <td class="topic-name"><%= topic.name %></td>
+                        <td><%= time_ago_in_words(topic.created_at) %> <%= t("index.ago") %></td>
+                        <td><%= topic.reviews.count %></td>
+                        <td>
+                          <ul class="list-inline m-0">
+                            <li class="list-inline-item">
+                             <%= link_to [:admin, topic], :"data-toggle" => "modal", :"data-target" => "#approvalModal-#{topic.id}", class: "btn btn-success btn-sm rounded-0", type: "button" do %>
+                                <i class="fa fa-edit"></i>
+                               <% end %>
+                            </li>
+                            <li class="list-inline-item">
+                              <%= link_to [:admin, topic], method: :delete, data: { confirm:  t("index.You sure?") }, remote: true, class: "destroy-topic btn btn-danger btn-sm rounded-0", type: "button" do %>
+                                <i class="fa fa-trash"></i>
+                                <% end %>
+                            </li>
+                          </ul>
+                        </td>
+                      </tr>
+                      <%= render 'form_edit', object: topic %>
+                    <% end %>
+                  <% end %>
+                <%= render @topic %>
+                </tbody>
+              </table>
+            <%= will_paginate @topics %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
