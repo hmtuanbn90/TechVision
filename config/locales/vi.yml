@@ -45,7 +45,6 @@ vi:
       Profile: "Thông tin"
       Settings: "Chỉnh sửa"
       Log out: "Đăng xuất"
-      Log in: "Đăng nhập"
       Read: "Đọc"
       Accept: "Chấp nhận"
       You sure?: "bạn có chắc?"
@@ -85,3 +84,10 @@ vi:
       posts: "Số bài viết"
       action: "Hành động"
       nameTopic: "Tên chủ đề"
+      Log in: "Đăng nhập"
+
+  enums:
+    review:
+      appended:
+        waitting: "Đợi xét duyệt"
+        approved: "Đã duyệt"

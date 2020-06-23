@@ -8,6 +8,7 @@ class Review < ApplicationRecord
   has_many  :comments, dependent: :destroy
   has_many  :bookmarks, dependent: :destroy
   has_one_attached :image
+  enum appended: { waitting: false, approved: true }
   scope :all_review, -> { order created_at: :desc }
   scope :approval, -> {where appended: true}
   scope :hot, -> {where(hot: true).order(created_at: :desc).limit(2)}

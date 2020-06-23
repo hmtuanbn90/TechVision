@@ -24,7 +24,7 @@
     <% if !@reviews.empty? %>
       <% @reviews.each do |review| %>
         <div class="col-md-12">
-          <div class="col-md-10">
+          <div class="col-md-8">
             <div class="post post-row">
               <%= link_to image_tag(review.image, class: "post-img"),review_path(review) if review.image.attached? %>
               <div class="post-body">
@@ -38,6 +38,13 @@
                 <p><%=review.about%></p>
               </div>
             </div>
+          </div>
+          <div class="col-md-2">
+            <% if review.appended_i18n == "Approved" %>
+            <span class="btn btn-success"><%= review.appended_i18n %></span>
+            <% else %>
+            <span class="btn btn-warning"><%= review.appended_i18n %></span>
+            <% end %>
           </div>
           <div class="col-md-2">
             <%= link_to (t ".Delete"), user_review_path(review.user, review), method: :delete,

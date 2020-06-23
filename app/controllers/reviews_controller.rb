@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
 	before_action :logged_in_user, only: [:create, :destroy, :edit]
-	before_action :correct_user, only: :destroy
+  before_action :admin_user, only: :destroy
 
   def index
     @reviews = Review.all_review
@@ -32,7 +32,7 @@ class ReviewsController < ApplicationController
     @review.image.attach params[:review][:image]
     if @review.save
       flash[:success] = t("index.Review created!")
-      redirect_to @review
+      redirect_to user_path current_user
     else
       @topics = Topic.all
       render :new
@@ -56,7 +56,6 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find params[:id]
-    @user = @review.user_id
     @review.destroy
     flash[:success] = t("index.Review Deleted!")
     redirect_to root_url
@@ -67,8 +66,7 @@ class ReviewsController < ApplicationController
     params.require(:review).permit :content, :image, :title, :topic_id, hashtag_ids:[]
   end
 
-  def correct_user
-    @review = current_user.reviews.find params[:id]
-    redirect_to root_url if @review.nil?
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
   end
 end
