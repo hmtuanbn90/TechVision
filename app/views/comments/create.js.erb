@@ -1,1 +1,2 @@
-$("#comments").html("<%= @comment.user.name %>: <%= @comment.content %>");
+$("#comments").html('<%= comment.user.name %>: <%= comment.content %>');
+$("#comment_count").html('<%= @review.comments.count %> <%= @review.comments.count == 1 ? t("index.comment") : t("index.comment") %>');

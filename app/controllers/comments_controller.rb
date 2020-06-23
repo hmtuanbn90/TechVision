@@ -6,18 +6,31 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment.review, notice: t("index.Created")}
+        format.js
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
+        format.js
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def edit
-    reviews = Review.all
-    @review = reviews.find params[:id]
-    @comment = current_user.comments
+    @comment = Comment.find params[:id]
+    @review = Review.find params[:review_id]
+  end
+
+  def update
+    @comment = Comment.find params[:id]
+    if @comment.update comment_params
+      flash[:success] = t("index.Comment updated")
+      redirect_to review_path(params[:review_id])
+    else
+      @comment = Comment.find params[:id]
+      @review = Review.find(params[:review_id])
+      render :edit
+    end
   end
 
   def destroy
@@ -25,7 +38,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to @review if @comment.nil?
     flash[:success] = t("index.Comment deleted")
-    redirect_to review_path
+    redirect_to review_path(params[:review_id])
   end
 
   private

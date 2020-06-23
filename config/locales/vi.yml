@@ -72,5 +72,7 @@ vi:
       posted: "Đăng"
       ago: "trước"
       bailienquan: "Bài viết liên quan"
-
+      like: "Lượt thích"
+      likes: "Lượt thích"
+      deletelike: "Hủy Like"
 
