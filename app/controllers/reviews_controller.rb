@@ -9,13 +9,12 @@ class ReviewsController < ApplicationController
   def show
     @review = Review.find params[:id]
     @bookmark = Bookmark.new
-    @report = Report.new    
+    @report = Report.new
     if logged_in?
       @bookmarked = Bookmark.bookmarked(@review.id, current_user.id).first
       @reported = Report.reported(@review.id, current_user.id).first
     end
-    @comments = @review.comments.paginate(
-      page: params[:page], per_page: 5)
+    @comments = @review.comments.paginate(page: params[:page], per_page: 5)
     @comment = @review.comments.build
     @hashtags = @review.hashtags
     @reviewFilter = Review.reviewHashtag params[:id]
@@ -34,7 +33,7 @@ class ReviewsController < ApplicationController
     @review.image.attach params[:review][:image]
     if @review.save
       flash[:success] = t("index.Review created!")
-      redirect_to user_path current_user
+      redirect_to user_path current_user.id
     else
       @topics = Topic.all
       render :new
@@ -58,6 +57,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find params[:id]
+
     @review.destroy
     flash[:success] = t("index.Review Deleted!")
     redirect_to root_url
@@ -65,8 +65,8 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit :content, :image, 
-     :title, :topic_id, hashtag_details_attributes: 
+    params.require(:review).permit :content, :image,
+     :title, :topic_id, hashtag_details_attributes:
      [:hashtag_id, hashtag_attributes: [:name]]
   end
 

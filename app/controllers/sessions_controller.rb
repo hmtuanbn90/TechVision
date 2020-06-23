@@ -12,7 +12,14 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out if logged_in?
+    if current_user
+      session.delete(:user_id)
+      flash[:success] = "Sucessfully logged out!"
+    end
     redirect_to root_url
+  end
+
+  def auth_hash
+    request.env['omniauth.auth']
   end
 end

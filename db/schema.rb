@@ -127,9 +127,14 @@ ActiveRecord::Schema.define(version: 2020_06_16_081745) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
     t.string "name"
     t.string "password"
     t.string "email"
+    t.string "token"
+    t.string "secret"
+    t.string "profile_image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"

@@ -1,18 +1,17 @@
 class CommentsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy, :edit]
+  before_action :correct_user, only: [:edit, :update]
 
   def create
-    @comment = current_user.comments.build comment_params
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @comment.review, notice: t("index.Created")}
+    @comment = current_user.comments.build(comment_params)
+    if @comment.save
+      respond_to do |format|
+        format.html {render(partial: 'comment', locals: { comment: @comment})}
         format.js
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new }
-        format.js
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.json {render json: {result: "OK"} }
       end
+      # flash[:success] = t("index.Created")
+      # redirect_to @comment.review
     end
   end
 
@@ -24,7 +23,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find params[:id]
     if @comment.update comment_params
-      flash[:success] = t("index.Comment updated")
+      flash[:success] = t("index.comment_updated")
       redirect_to review_path(params[:review_id])
     else
       @comment = Comment.find params[:id]
@@ -38,11 +37,19 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to @review if @comment.nil?
     flash[:success] = t("index.Comment deleted")
-    redirect_to review_path(params[:review_id])
+    respond_to do |format|
+      format.html
+      format.js
+      format.json {render json: {result: "OK"} }
+    end
   end
 
   private
   def comment_params
-    params.require(:comment).permit :content, :review_id, :user_id
+    params.require(:comment).permit(:content, :review_id)
+  end
+
+  def correct_user
+    @comment = current_user.comments.find params[:id]
   end
 end

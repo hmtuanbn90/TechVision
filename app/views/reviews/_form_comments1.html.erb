@@ -1,0 +1,18 @@
+
+<div class="panel panel-primary">
+  <div class="panel-heading ">
+    <% if @comments.nil? %>
+      <span>0 <%= t".comment" %></span>
+    <% else %>
+      <div id="comment_count">
+        <%= @review.comments.count %>
+        <%= @review.comments.count == 1 ? t("index.comment") : t("index.comments") %>
+      </div>
+    <% end %>
+      <%= render "comments/text_comment_area" %>
+    </div>
+  <div id="comments">
+      <%= render @comments %>
+  </div>
+  <%= will_paginate @comments %>
+</div>

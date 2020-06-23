@@ -18,5 +18,6 @@
 		<%= f.submit t("index.Log in"), class: "btn btn-primary" %>
 	    <% end %>
 	  <p><%= t("index.New user?") %> <%= link_to t("index.Sign up now!"), signup_path %></p>
+	    <%= render "sessions/navigation" %>
 	</div>
 </div>

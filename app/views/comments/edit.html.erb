@@ -1,3 +1,4 @@
+<%= t("index.Editing #{}") %>
 <div>
   <%= form_for [@review, @comment] do |f| %>
     <%= f.text_area :content, placeholder: t(:Comment_here, scope: "reviews.show") %>
