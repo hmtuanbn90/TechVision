@@ -34,10 +34,12 @@ ActiveRecord::Schema.define(version: 2020_06_16_081745) do
   end
 
   create_table "bookmarks", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "review_id"
+    t.integer "user_id", null: false
+    t.integer "review_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["review_id"], name: "index_bookmarks_on_review_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|
@@ -92,9 +94,13 @@ ActiveRecord::Schema.define(version: 2020_06_16_081745) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.text "cause"
+    t.text "reason"
+    t.integer "user_id", null: false
+    t.integer "review_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["review_id"], name: "index_reports_on_review_id"
+    t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -133,12 +139,16 @@ ActiveRecord::Schema.define(version: 2020_06_16_081745) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookmarks", "reviews"
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "comments", "reviews"
   add_foreign_key "comments", "users"
   add_foreign_key "hashtag_details", "hashtags"
   add_foreign_key "hashtag_details", "reviews"
   add_foreign_key "likes", "reviews"
   add_foreign_key "likes", "users"
+  add_foreign_key "reports", "reviews"
+  add_foreign_key "reports", "users"
   add_foreign_key "reviews", "topics"
   add_foreign_key "reviews", "users"
 end

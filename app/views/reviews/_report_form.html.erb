@@ -1,0 +1,53 @@
+<div class="modal" id="myModal">
+  <%= form_for [@review, @report] do |f| %>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1><%= t("index.Report") %></h1>
+      </div>
+      <div class="modal-body">
+        <%= label_tag "reason", t("index.Reason") %>
+          <%= f.hidden_field :review_id, value: @review.id %>
+          <%= f.text_field :reason, class: 'form-control'%>
+      </div>
+      <div class="modal-footer">
+        <input id="mysubmit" type="button" class="btn btn-success" value=<%= t("index.Submit") %>>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><%= t("index.Cancel") %></button>
+      </div>
+    </div>
+  </div> 
+</div>
+<div class="button">
+<a href="#" class="btn btn-danger" data-toggle="modal" data-target="#myModal"><%= t("index.Report") %></a>
+</div>
+<% end %>
+
+<script>
+$(document).ready(function(){  
+  $("#mysubmit").on('click',function(event){
+    event.preventDefault();
+    var review_id = $('#new_report [name="report[review_id]"]').val();
+    var reason = $('#new_report [name="report[reason]"]').val();
+    var token = $('meta[name=csrf-token]').attr( 'content' );
+      $.ajaxSetup( {
+        beforeSend: function ( xhr ) {
+        xhr.setRequestHeader( 'X-CSRF-Token', token );
+            }
+        });
+
+    $.ajax({
+            url: 'http://localhost:3000/en/reviews/'+review_id+'/reports',
+            dataType: 'html',
+            method: 'POST',
+            data: {
+              'report[review_id]' :review_id,
+              'report[reason]' :reason
+            }
+    }).done(function(data){
+      $('button[data-dismiss="modal"]').trigger('click');
+      $('.button').html(data);
+
+    });
+  });
+});
+</script>

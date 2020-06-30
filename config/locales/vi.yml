@@ -88,7 +88,12 @@ vi:
       hashtager: "hashtag đã tồn tại"
       tagsInput: "Nhập tags"
       Add: "Thêm"
-
+      Report: "Báo xấu"
+      Submit: "Gửi"
+      Cancel: "Huỷ"
+      Reason: "Lý do"
+      Reported: "Đã báo xấu"
+      
   enums:
     review:
       appended:
