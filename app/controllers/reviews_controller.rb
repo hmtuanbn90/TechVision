@@ -9,8 +9,10 @@ class ReviewsController < ApplicationController
   def show
     @review = Review.find params[:id]
     @bookmark = Bookmark.new
+    @report = Report.new    
     if logged_in?
       @bookmarked = Bookmark.bookmarked(@review.id, current_user.id).first
+      @reported = Report.reported(@review.id, current_user.id).first
     end
     @comments = @review.comments.paginate(
       page: params[:page], per_page: 5)

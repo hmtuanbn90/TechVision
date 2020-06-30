@@ -21,11 +21,13 @@ Rails.application.routes.draw do
     resources :bookmarks
     resources :topics, only: [:show]
     resources :reviews do
+      resources :reports, only: [:create]
       resources :likes
       resources :bookmarks, only: [:create]
       resources :comments
     end
     namespace :admin do
+      resources :reports
       resources :revises
       resources :reviews
       resources :topics, only: [:create, :update, :destroy, :index]

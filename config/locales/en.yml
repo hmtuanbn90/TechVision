@@ -89,6 +89,11 @@ en:
       hashtager: "hashtag already exist"
       tagsInput: "Tags Input"
       Add: "Add"
+      Report: "Report"
+      Submit: "Submit"
+      Cancel: "Cancel"
+      Reason: "Reason"
+      Reported: "Reported"
 
   enums:
     review:

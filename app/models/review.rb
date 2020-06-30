@@ -7,6 +7,7 @@ class Review < ApplicationRecord
   has_many :hashtags, through: :hashtag_details
   has_many  :comments, dependent: :destroy
   has_many  :bookmarks, dependent: :destroy
+  has_many :reports, dependent: :destroy
   has_one_attached :image
   accepts_nested_attributes_for :hashtag_details
   enum appended: { waitting: false, approved: true }
