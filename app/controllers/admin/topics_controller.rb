@@ -7,6 +7,7 @@ class Admin::TopicsController < Admin::BaseController
 
   def new
   end
+
   def create
     @topic = Topic.new topic_params
     respond_to do |format|
@@ -20,6 +21,7 @@ class Admin::TopicsController < Admin::BaseController
       end
     end
   end
+  
   def update
     @topic = Topic.find params[:id]
     if @topic.update topic_params

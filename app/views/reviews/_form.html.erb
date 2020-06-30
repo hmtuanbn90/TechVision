@@ -7,9 +7,16 @@
 <% end %>
 
 <%= form_for @review do |f| %>
+  <div class="form-group">
+    <label><%= t("index.tagsInput") %></label>
+    <input type="text" id="autocomplete" class="form-control" />
+    <%= link_to_add_fields t("index.Add"), f, :hashtag_details %>
+    <ul id="hashtag_name_ul">
+        
+    </ul>
+  </div>
       <div>
-        <ul id="hashtag_name_ul">
-        </ul>
+        
       </div>
     </div>
   </div>
@@ -37,3 +44,4 @@
     <%= f.submit  %>
   </div>
 <% end %>
+

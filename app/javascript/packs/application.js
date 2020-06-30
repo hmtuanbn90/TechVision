@@ -4,14 +4,16 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-// require("turbolinks").start()
+//require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 require("jquery.autocomplete")
+require("hashtag")
 import "bootstrap"
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
+
 // import 'js-autocomplete/auto-complete.css';
 // import autocomplete from 'js-autocomplete';
 
@@ -24,7 +26,7 @@ import 'regenerator-runtime/runtime'
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 (function($) {
-  "use strict"
+ 
 
 
   // Fixed Nav
