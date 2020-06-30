@@ -86,6 +86,9 @@ en:
       action: "Action"
       nameTopic: "Name topic:"
       Log in: "Log in"
+      hashtager: "hashtag already exist"
+      tagsInput: "Tags Input"
+      Add: "Add"
 
   enums:
     review:

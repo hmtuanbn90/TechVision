@@ -63,7 +63,9 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit :content, :image, :title, :topic_id, hashtag_ids:[]
+    params.require(:review).permit :content, :image, 
+     :title, :topic_id, hashtag_details_attributes: 
+     [:hashtag_id, hashtag_attributes: [:name]]
   end
 
   def admin_user

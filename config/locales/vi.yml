@@ -85,6 +85,9 @@ vi:
       action: "Hành động"
       nameTopic: "Tên chủ đề"
       Log in: "Đăng nhập"
+      hashtager: "hashtag đã tồn tại"
+      tagsInput: "Nhập tags"
+      Add: "Thêm"
 
   enums:
     review:

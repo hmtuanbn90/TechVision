@@ -8,6 +8,7 @@ class Review < ApplicationRecord
   has_many  :comments, dependent: :destroy
   has_many  :bookmarks, dependent: :destroy
   has_one_attached :image
+  accepts_nested_attributes_for :hashtag_details
   enum appended: { waitting: false, approved: true }
   scope :all_review, -> { order created_at: :desc }
   scope :approval, -> {where appended: true}
