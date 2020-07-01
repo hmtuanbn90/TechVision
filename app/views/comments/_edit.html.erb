@@ -1,0 +1,56 @@
+<!-- edit comment bang popup ajax chua hoan thanh -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1>Edit</h1>
+      </div>
+      <div class="edit-comment">
+        <%= form_for [@review, @comment] do |f| %>
+          <%= label_tag "edit", "" %>
+          <%= f.hidden_field :id, value: @comment.id %>
+          <%= f.hidden_field :review_id, value: @review.id %>
+          <div style = "margin : 20px">
+          <%= f.text_field :content, class: 'edit-area'%>
+        </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <input id="mysubmit" type="button" class="btn btn-success" value="Submit">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<a href="#" data-toggle="modal" data-target="#myModal"><i>Edit</i></a>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $(".edit-area ").on('click',function(event) {
+    event.preventDefault();
+    var review_id = $('#new_comment [name="comment[review_id]"]').val();
+    var comment_id = $('#new_comment [name="comment[id]"]').val();
+    var content = $('#new_comment [name="comment[content]"]').val();
+    var token = $('meta[name=csrf-token]').attr( 'content' );
+    $.ajaxSetup( {
+      beforeSend: function ( xhr ) {
+      xhr.setRequestHeader( 'X-CSRF-Token', token );
+      }
+    });
+
+    $.ajax({
+      url: 'http://localhost:3000/en/reviews/'+review_id+'/comments/'+comment_id,
+      dataType: 'html',
+      method: 'PATH',
+      data:{
+          'comment[review_id]': review_id,
+          'comment[content]' : content
+     }
+    })
+      .done(function(data){
+        $('#comments').replace(data);
+      });
+   });
+   });
+</script>

@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'rails', '6.0.0'
 # gem 'pg_search'
+gem 'omniauth-twitter'
 gem 'active_storage_validations', '0.8.2'
 gem 'bcrypt', '3.1.13'
 gem 'rails-i18n'
@@ -25,6 +26,7 @@ gem 'bootsnap', '>=1.4.2', require: false
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'dotenv-rails'
 end
 group :development do
   gem 'web-console', '4.0.1'

@@ -1,0 +1,16 @@
+<div style = "margin : 20px">
+  <b><span><%= comment.user.name %>:</span></b>
+  <span><%= comment.content %></span><br>
+  <% if logged_in? %>
+    <% if comment.user_id == current_user.id %>
+      <i><%= link_to t("index.edit"), edit_review_comment_path(comment.review, comment) %></i>
+      <i><%= link_to t("index.Delete"), "javascript:void(0);",
+       data_delete: { confirm: "You sure?" }, data_comment: "#{comment.id}",
+       data_review: "#{comment.review.id}", class:"del_comment" %></i>
+    <% end %>
+  <% end %>
+  <span class="timestamp" >
+    <i><%= t("index.posted") %> <%= time_ago_in_words(comment.created_at) %>
+    <%= t("index.ago") %></i><hr>
+  </span>
+</div>

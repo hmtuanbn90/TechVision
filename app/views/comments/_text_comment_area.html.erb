@@ -1,0 +1,37 @@
+<div id="comment-<%= @comment.id %>">
+  <%= form_for [@review, @comment] do |f| %>
+    <%= f.text_area :content, placeholder: t(:Comment_here, scope: "reviews.show") %>
+    <%= f.button t(:Send, scope: "reviews.show"), class: "create btn btn-primary"%>
+    <%= f.hidden_field :id, value: @comment.id %>
+    <%= f.hidden_field :review_id, value: @review.id %>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $(".create ").on('click',function(event) {
+    event.preventDefault();
+    var review_id = $('#new_comment [name="comment[review_id]"]').val();
+    var content = $('#new_comment [name="comment[content]"]').val();
+    var token = $('meta[name=csrf-token]').attr( 'content' );
+    $.ajaxSetup( {
+      beforeSend: function ( xhr ) {
+      xhr.setRequestHeader( 'X-CSRF-Token', token );
+      }
+    });
+
+    $.ajax({
+      url: 'http://localhost:3000/en/reviews/' + review_id + '/comments/' ,
+      dataType: 'html',
+      method: 'POST',
+      data:{
+          'comment[review_id]': review_id,
+          'comment[content]' : content
+     }
+    })
+      .done(function(data){
+        $('#comments').prepend(data);
+      });
+   });
+   });
+</script>
