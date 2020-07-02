@@ -43,6 +43,7 @@ vi:
       About Us: "Về chúng tôi"
       Contacts: "Liên hệ"
       Users: "Cộng đồng"
+      user: "Người đăng"
       Profile: "Thông tin"
       Settings: "Chỉnh sửa"
       Log out: "Đăng xuất"
@@ -94,7 +95,7 @@ vi:
       Cancel: "Huỷ"
       Reason: "Lý do"
       Reported: "Đã báo xấu"
-      
+
   enums:
     review:
       appended:

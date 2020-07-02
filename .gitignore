@@ -99,3 +99,5 @@ yarn-debug.log*
 !/tmp/pids/
 !/tmp/pids/.keep
 Gemfile.lock
+# Ignore application configuration
+/config/application.yml
