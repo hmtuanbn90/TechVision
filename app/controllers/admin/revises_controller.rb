@@ -23,10 +23,6 @@ class Admin::RevisesController < Admin::BaseController
     @review = Review.find params[:id]
     @review.destroy
     flash[:success] = t("index.Review Deleted!")
-    respond_to do |format|
-      format.html
-      format.js
-      format.json {render json: {result: "OK"} }
-    end
+    redirect_to admin_revises_path
   end
 end
