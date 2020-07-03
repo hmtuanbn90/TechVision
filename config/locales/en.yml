@@ -49,7 +49,8 @@ en:
       Settings: "Settings"
       Log out: "Log out"
       Read: "Read"
-      Accept: "Accept"
+      Accept_add: "Accept"
+      accept_del: "Accept"
       You sure?: "You sure?"
       topic: "Topic"
       Update your profile: "Update your profile"
@@ -96,6 +97,8 @@ en:
       Cancel: "Cancel"
       Reason: "Reason"
       Reported: "Reported"
+      reporter: "Reporter"
+
 
   enums:
     review:
