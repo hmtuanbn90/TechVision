@@ -3,7 +3,8 @@ class BookmarksController < ApplicationController
   before_action :correct_user, only: :destroy
 
   def index
-    @bookmarks = Bookmark.all
+    @user = current_user
+    @bookmarks = @user.bookmarks
   end
 
   def create
@@ -20,10 +21,7 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.find params[:id]
     @bookmark.destroy
     flash[:success] = t("index.Bookmark deleted!")
-    respond_to do |format|
-      format.html { redirect_to review_bookmarks_path(@bookmark.review) }
-      format.js
-    end
+    redirect_to bookmarks_path
   end
 
   private

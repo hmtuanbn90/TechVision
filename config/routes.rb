@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :reviews do
       resources :reports, only: [:create]
       resources :likes
-      resources :bookmarks, only: [:create]
+      resources :bookmarks, only: [:create, :destroy]
       resources :comments
     end
     namespace :admin do
@@ -32,6 +32,6 @@ Rails.application.routes.draw do
       resources :revises
       resources :reviews
       resources :topics, only: [:create, :update, :destroy, :index]
-    end 
+    end
   end
 end
