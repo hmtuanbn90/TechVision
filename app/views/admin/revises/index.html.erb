@@ -20,7 +20,7 @@
                 <tr>
                   <th><%= index+1%></th>
                   <td><%= link_to review.user.name, user_path(review.user) %></td>
-                  <td><%= link_to review.title, admin_revise_path(review) %></td>
+                  <td><%= link_to review.title, review_path(review) %></td>
                   <td><%= link_to edit_admin_revise_path(review),
                     class: "btn btn-success btn-sm rounded-0", type: "button" do %>
                       <i class="fa fa-edit"></i>

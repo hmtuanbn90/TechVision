@@ -6,11 +6,7 @@
 		  <%= gravatar_for @user %>
 		  <%= @user.name %>
 	  </h1><br>
-    <%= link_to (t ".New Review"), new_review_path, class: "btn btn-primary" %><br>
-    <% if current_user.admin? %>
-      <%= link_to "Revises", admin_revises_path, class: "btn btn-primary" %><br>
-      <%= link_to "Reports", admin_reports_path, class: "btn btn-primary" %><br>
-    <% end %>
+    <%= link_to t("index.New Review"), new_review_path, class: "btn btn-primary" %><br>
 	</section>
   </aside>
 </div>

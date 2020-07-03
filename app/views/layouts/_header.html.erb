@@ -38,7 +38,6 @@
       <div class="section-row">
         <ul class="nav-aside-menu">
           <% if logged_in? %>
-            <li class="nav-li"><%= link_to t("index.Users"), users_path %></li>
             <li class="dropdown nav-li">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <%= t("index.Account") %><b class="caret"></b>
@@ -51,6 +50,14 @@
                 </li>
               </ul>
             </li>
+            <li class="nav-li"><%= link_to t("index.Users"), users_path %></li>
+            <li class="nav-li"><%= link_to t("index.New Review"), new_review_path %></li>
+            <li class="nav-li"><%= link_to t("index.bookmark"), bookmarks_path %></li>
+            <% if current_user.admin? %>
+            <li class="nav-li"><%= link_to t("index.revise"), admin_revises_path %></li>
+            <li class="nav-li"><%= link_to t("index.Report"), admin_reports_path %></li>
+            <li class="nav-li"><%= link_to t("index.topic"), admin_topics_path %></li>
+            <% end %>
           <% else %>
             <li class="nav-li"><%= link_to t("index.Log in"), login_path %></li>
           <% end %>
