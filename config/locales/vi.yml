@@ -48,7 +48,8 @@ vi:
       Settings: "Chỉnh sửa"
       Log out: "Đăng xuất"
       Read: "Đọc"
-      Accept: "Chấp nhận"
+      Accept_add: "Chấp nhận đăng bài"
+      accept_del: "Chấp nhận xóa bài"
       You sure?: "bạn có chắc?"
       topic: "Chủ đề"
       Update your profile: "Chỉnh sửa thông tin"
@@ -65,7 +66,7 @@ vi:
       Save changes: "Lưu thay đổi"
       Account: "Tài khoản"
       Empty field!: "Rỗng"
-      Title: "Tiêu đề"
+      Title: "Tiêu đề bài viết"
       Have: "Có"
       reviews: "bài viết"
       All comment: "Tất cả bình luận"
@@ -95,6 +96,7 @@ vi:
       Cancel: "Huỷ"
       Reason: "Lý do"
       Reported: "Đã báo xấu"
+      reporter: "Người báo xấu"
 
   enums:
     review:

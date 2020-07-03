@@ -16,27 +16,29 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <div class="col-md-10">
-            <% if logged_in? %>
-              <% if @bookmarked.nil? %>
-                <div id="bookmark_form">
-                  <%= render "reviews/bookmark_form" %></div>
-                <% else %>
-                <div id="bookmarked_form">
-                  <%= render "reviews/bookmarked_form" %></div>
+          <div class="col-md-12">
+            <div class="col-md-10">
+              <% if logged_in? %>
+                <% if @bookmarked.nil? %>
+                  <div id="bookmark_form">
+                    <%= render "reviews/bookmark_form" %></div>
+                  <% else %>
+                  <div id="bookmarked_form">
+                    <%= render "reviews/bookmarked_form" %></div>
+                <% end %>
               <% end %>
-            <% end %>
+            </div>
+            <div class="col-md-2">
+              <% if @reported.nil? %>
+                <div>
+                  <%= render "reviews/report_form" %></div>
+              <% else %>
+                <div>
+                  <%= render "reviews/reported_form" %></div>
+              <% end %>
+            </div>
           </div>
-          <div class="col-md-2">
-            <% if @reported.nil? %>
-              <div>
-                <%= render "reviews/report_form" %></div>
-            <% else %>
-              <div>
-                <%= render "reviews/reported_form" %></div>
-            <% end %>
-          </div>
-          <div class="section-row sticky-container">
+          <div class="section-row sticky-container col-md-12">
             <div class="main-post">
               <figure class="figure-img">
                 <%= image_tag @review.image,
@@ -129,5 +131,3 @@
   }
   });
 </script>
-
-
