@@ -5,21 +5,22 @@ $(document).on('click', '.add_fields', function(){
   var idHidden = $(field).find('[type="hidden"]').attr('id');
   var idText = $(field).find('[type="text"]').attr('id');
   var check = true;
-  var a= $('#autocomplete').val()
-  if(a.startsWith("#")){
-      a = a;
+  var nameHashtag= $('#autocomplete').val()
+  if(nameHashtag.startsWith("#")){
+      nameHashtag = nameHashtag;
 	}else{
-	  a = '#'+a;
+	  nameHashtag = '#'+nameHashtag;
 	};
-  $('ul[id="hashtag_name_ul"] li input[type="text"]').each(function(){
-	var input = $(this).val();
-	if (input == a) {
+  $('ul[id="hashtag_name_ul"] li ').each(function(){
+	var input = $(this).find('span[class="1"]').text();
+  var inputa = $(this).find('input[type="text"]').val();
+	if (input == nameHashtag||inputa==nameHashtag) {
 	  check = false;
 	  }
 	});
   if(check){
 	$('#hashtag_name_ul').append(field);
-	$('#' + idText).val(a);
+	$('#' + idText).val(nameHashtag);
 	$('#' + idHidden).remove();
 	$('#autocomplete').val('');
   }else{alert('<%= t("index.hashtager") %>');}
