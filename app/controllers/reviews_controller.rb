@@ -33,7 +33,7 @@ class ReviewsController < ApplicationController
     @review.image.attach params[:review][:image]
     if @review.save
       flash[:success] = t("index.Review created!")
-      redirect_to user_path current_user.id
+      redirect_to @review
     else
       @topics = Topic.all
       render :new

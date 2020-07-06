@@ -62,5 +62,6 @@ Rails.application.configure do
 
   # Allow connections to local server.
   config.hosts.clear
+  config.active_storage.service = :cloudinary
 
 end

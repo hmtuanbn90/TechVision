@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'rails', '6.0.0'
 # gem 'pg_search'
-gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'omniauth-twitter'
 gem 'active_storage_validations', '0.8.2'
 gem 'bcrypt', '3.1.13'
@@ -19,13 +18,15 @@ gem 'bootstrap-sass', '3.4.1'
 gem 'will_paginate','3.1.8'
 gem 'bootstrap-will_paginate','1.0.0'
 gem 'puma', '3.12.1'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'sass-rails', '5.1.0'
 gem 'webpacker', '4.0.7'
 gem 'turbolinks', '5.2.0'
 gem 'jbuilder', '2.9.1'
 gem 'bootsnap', '>=1.4.2', require: false
+gem 'cloudinary'
 group :development, :test do
-  gem 'mysql2', '~> 0.5.3'
+  gem 'mysql2'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails'
 end

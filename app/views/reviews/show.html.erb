@@ -29,15 +29,16 @@
               <% end %>
             </div>
             <div class="col-md-2">
-              <% if @reported.nil? %>
+              <% if logged_in? %>
+                <% if @reported.nil? %>
                 <div>
                   <%= render "reviews/report_form" %></div>
-              <% else %>
+                <% else %>
                 <div>
                   <%= render "reviews/reported_form" %></div>
+                <% end %>
               <% end %>
             </div>
-          </div>
           <div class="section-row sticky-container col-md-12">
             <div class="main-post">
               <figure class="figure-img">
