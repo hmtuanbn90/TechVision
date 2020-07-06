@@ -2,10 +2,12 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: <root>
-  password: <mysql_user_password>
-  socket: /var/run/mysqld/mysqld.sock
+  username: <%= Figaro.env.database_username %>
+  password: <%= Figaro.env.database_password %>
+  timeout: 5000
+  # socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
-  database: TechVision
+  database: <%= Figaro.env.database_name %>
+
