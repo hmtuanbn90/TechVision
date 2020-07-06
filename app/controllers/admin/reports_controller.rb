@@ -1,4 +1,4 @@
-class Admin::ReportsController < ApplicationController
+class Admin::ReportsController < Admin::BaseController
   before_action :logged_in_user, only: [:create]
 
   def index
