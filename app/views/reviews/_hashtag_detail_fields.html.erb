@@ -1,9 +1,9 @@
 <li>
-	<span></span>
-	<%= f.hidden_field :hashtag_id %>
-	<%= f.fields_for(:hashtag, Hashtag.new) do |ff| %>
-	  <%= ff.text_field :name %>
-	<% end %>
-	<%= f.hidden_field :_destroy %>
-    <%= link_to t("index.Delete"), '#', class: 'remove_record' %>
+  <span class="1"></span>
+  <%= f.hidden_field :hashtag_id %>
+  <%= f.fields_for(:hashtag, Hashtag.new) do |ff| %>
+	<%= ff.text_field :name %>
+  <% end %>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to t("index.Delete"), '#', class: 'remove_record' %>
 </li>

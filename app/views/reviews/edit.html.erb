@@ -1,3 +1,113 @@
 <br>
-<h3><%= t("index.Editing #{@review.title}") %></h3>
-<%= render "form" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 row">
+      <h3><%= t("index.Editing #{@review.title}") %></h3>
+      <% if @review.errors.any? %>
+  <ul>
+    <%= @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @review do |f| %>
+  <div class="form-group">
+    <label><%= t("index.tagsInput") %></label>
+    <input type="text" id="autocomplete" class="form-control" />
+    <%= link_to_add_fields t("index.Add"), f, :hashtag_details %>
+    <ul id="hashtag_name_ul">  
+    </ul>
+  </div>
+    <%= f.fields_for :hashtag_details, @review.hashtag_details do |hashtag_detail| %>
+    <div class="form-field ">
+      <%= hashtag_detail.label :name, hashtag_detail.object.hashtag.name %>
+      <%= link_to t("index.Delete"), '#', class: 'remove_hashtag' %>
+      <%= hashtag_detail.hidden_field :_destroy, value: false %>
+    </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+  <div>
+    <%= f.label :topic %>
+  </div>
+  <%= f.select :topic_id, options_from_collection_for_select(@topics, "id", "name") %>
+  <div>
+    <%= f.label :title %>
+  </div>
+  <div>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :content %>
+  </div>
+  <div>
+    <%= f.cktext_area :content, class: "ckeditor" %>
+  </div>
+  <span class="image">
+    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png,image/jpg" %>
+  </span>
+  <div>
+    <%= f.submit  %>
+  </div>
+<% end %>
+    </div>
+  </div>
+</div>
+<script>
+       
+$('#autocomplete').autocomplete({
+  source: function (request, response) {
+    $.ajax({
+      url: "/hashtags", // should be with '/'
+      data: { name: request.term },
+      dataType: 'json',
+      success: function(data) {
+        response($.map(data, function(dataItem) {
+            return { value: dataItem.name, data: dataItem.id };
+        }));
+      },
+    });
+  },
+  select: function(event, ui) {
+    // $("#hashtag_name_ul").append("<li>"+ ui.item.value + "<input type = 'hidden' name='review[hashtag_ids][]' value='" + ui.item.data + "'></li>");
+     // $("#theHidden").val(ui.item.id) 
+    var id = $('.add_fields').data('id');
+    var new_id = new Date().getTime();
+    var field = $('.add_fields').data('fields').replace(new RegExp(id, 'gi'), new_id);
+    var idHidden = $(field).find('[type="hidden"]').attr('id');
+    var idText = $(field).find('[type="text"]').attr('id');
+    var check = true;
+    var nameHashtag= ui.item.value;
+    $('ul[id="hashtag_name_ul"] li span').each(function(){
+      var input = $(this).text();
+      if (input == nameHashtag) {
+        check = false;
+      }
+    });
+    if(check){
+      $('#hashtag_name_ul').append(field);
+      $('#' + idHidden).val(ui.item.data);
+      $('#' + idHidden).parent().find('span').html(nameHashtag);
+      $('#' + idText).remove();
+    }else{alert('<%= t("index.hashtager") %>');}
+  }    
+});
+ $('form').on('click', '.remove_hashtag', function(event) {
+  //$(this).append('<input id="_destroy" name="review[" type="hidden" />')
+  $(this).closest('div').hide();
+  $(this).parent().find('[name*="_destroy"]').val(true);
+  return event.preventDefault();
+});
+ $('form').on('click', '.remove_record', function(event) {
+  $(this).prev('input[type=hidden]').val('1');
+  $(this).closest('li').remove();
+  return event.preventDefault();
+});
+$(document).ready(function() {
+  $("#autocomplete").on("click", function(){
+    $(this).val("");
+  });
+});
+</script>

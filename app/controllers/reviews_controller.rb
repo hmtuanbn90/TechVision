@@ -43,6 +43,7 @@ class ReviewsController < ApplicationController
   def edit
     @review = Review.find params[:id]
     @topics = Topic.all
+    @hashtags = @review.hashtags
   end
 
   def update
@@ -65,9 +66,9 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit :content, :image,
+    params.require(:review).permit :id, :content, :image,
      :title, :topic_id, hashtag_details_attributes:
-     [:hashtag_id, hashtag_attributes: [:name]]
+     [:id, :hashtag_id, :_destroy, hashtag_attributes: [:name]]
   end
 
   def admin_user

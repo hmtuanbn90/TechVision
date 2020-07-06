@@ -1,0 +1,7 @@
+<%= f.fields_for :location do |location| %>
+  <%= f.check_box :_destroy %> 
+  <%= f.label :_destroy, "Delete." %> 
+  </br>
+  <%= f.label :street %> 
+  <%= f.text_field :street, class: 'form-control',placeholder: "123 A Street" %>
+ <% end %>

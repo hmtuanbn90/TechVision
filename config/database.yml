@@ -11,3 +11,4 @@ development:
   <<: *default
   database: <%= Figaro.env.database_name %>
 
+
