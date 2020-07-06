@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'rails', '6.0.0'
 # gem 'pg_search'
+gem 'csv'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'omniauth-twitter'
 gem 'active_storage_validations', '0.8.2'
 gem 'bcrypt', '3.1.13'
