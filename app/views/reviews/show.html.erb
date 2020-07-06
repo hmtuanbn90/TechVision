@@ -71,17 +71,6 @@
                           <%= link_to (t ".Edit Review"), edit_review_path(@review),
                                         class: "btn btn-primary css-edit" %><br>
                         </div>
-                        <div  class="col-md-2">
-                          <%= link_to (t ".Delete"), @review,method: :delete,
-                                  data: { confirm: t("index.You sure?") },
-                                                  class: "btn btn-danger" %>
-                        </div>
-                      <% elsif current_user.admin? %>
-                        <div  class="col-md-2">
-                          <%= link_to (t ".Delete"), @review, method: :delete,
-                                  data: { confirm: t("index.You sure?") },
-                                                      class: "btn btn-danger" %>
-                        </div>
                       <% end %>
                     </div>
                 <% end %><br><br>
