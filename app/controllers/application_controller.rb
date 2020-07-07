@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :topic_name
 
   def topic_name
-     @topics_name = Topic.all.limit(6)
+     @topics_name = Topic.all.limit(Settings.number)
   end
 
   def set_locale

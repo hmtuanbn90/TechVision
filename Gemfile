@@ -25,6 +25,7 @@ gem 'turbolinks', '5.2.0'
 gem 'jbuilder', '2.9.1'
 gem 'bootsnap', '>=1.4.2', require: false
 gem 'cloudinary'
+gem 'config'
 group :development, :test do
   gem 'mysql2', '~> 0.5.3'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
