@@ -9,6 +9,7 @@ class Review < ApplicationRecord
   has_many  :bookmarks, dependent: :destroy
   has_many :reports, dependent: :destroy
   has_one_attached :image
+  delegate :name, :to => :topic, :allow_nil => true
   accepts_nested_attributes_for :hashtag_details, allow_destroy: true
   enum appended: { waitting: false, approved: true }
   scope :all_review, -> { order created_at: :desc }

@@ -2,7 +2,7 @@
 <tr>
   <th scope="row"></th>
   <td><%= topic.name %></td>
-  <td><%= time_ago_in_words(topic.created_at) %></td>
+  <td><%= time_ago_in_words(topic.created_at) %><%= t("index.ago")%></td>
   <td><%= topic.reviews.count %></td>
   <td>
     <ul class="list-inline m-0">
