@@ -1,3 +1,7 @@
+<% if current_user.admin? %>
+  <h3><%= t ".title" %></h3>
+  <%= link_to t(".link_export"), users_path(format: :csv) %>
+<%end %>
 <% provide(:title, 'All users') %>
 <h1><%= t("index.User") %></h1>
 

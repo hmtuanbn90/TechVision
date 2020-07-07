@@ -3,6 +3,10 @@ class Admin::ReportsController < Admin::BaseController
 
   def index
   	@reports = Report.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @reports.to_csv, filename: "reports-#{Date.today}.csv" }
+    end
   end
 
   def show

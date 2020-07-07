@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+
   attr_accessor :remember_token
   has_many :likes, dependent: :destroy
   has_many :reviews, dependent: :destroy
@@ -50,4 +51,18 @@ class User < ApplicationRecord
     )
     user
   end
+
+  def self.to_csv
+    attributes = %w{id email name}
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.find_each do |user|
+        csv << attributes.map{ |attr| user.send(attr) }
+      end
+    end
+  end
+
 end
+

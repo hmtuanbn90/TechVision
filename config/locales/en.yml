@@ -18,6 +18,17 @@ en:
       Send: "Send"
       bookmarked: "Bookmarked"
 
+  users:
+    index:
+      link_export: "Export Users"
+      title: "Export CSV"
+
+  header_csv:
+    name: "Full Name"
+    tpoic: "Topic"
+    title: "Title"
+    abount: "Abount"
+
   index:
       comment: "Comment"
       comments: "Comments"
@@ -99,6 +110,7 @@ en:
       Reason: "Reason"
       Reported: "Reported"
       reporter: "Reporter"
+      reason: "Reason"
 
 
   enums:

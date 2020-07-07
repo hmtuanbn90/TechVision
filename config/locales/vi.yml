@@ -98,6 +98,7 @@ vi:
       Reason: "Lý do"
       Reported: "Đã báo xấu"
       reporter: "Người báo xấu"
+      reason: "Lý do"
 
   enums:
     review:

@@ -1,3 +1,7 @@
+<% if current_user.admin? %>
+  <h3><%= t ".title" %></h3>
+  <%= link_to t(".link_export"), admin_reports_path(format: :csv) %>
+<%end %>
 <div class="container py-5 text-white">
   <div class="row">
     <div class="col-md-12 mx-auto">
@@ -8,8 +12,9 @@
               <thead>
                 <tr>
                   <th class="col-md-1" ><%= t("index.stt") %></th>
-                  <th class="col-md-3"><%= t("index.reporter") %></th>
-                  <th class="col-md-6"><%= t("index.Title") %></th>
+                  <th class="col-md-2"><%= t("index.reporter") %></th>
+                  <th class="col-md-3"><%= t("index.Title") %></th>
+                  <th class="col-md-4"><%= t("index.reason") %></th>
                   <th class="col-md-2"><%= t("index.accept_del") %></th>
                 </tr>
               </thead>
@@ -20,6 +25,7 @@
                   <th><%= index+1%></th>
                   <td><%= link_to report.user.name, user_path(report.user) %></td>
                   <td><%= link_to report.review.title, admin_report_path(report.review.id) %></td>
+                  <td><%= report.reason%></td>
                   <td><%= link_to admin_report_path(report.review.id), method: :delete,
                     data_delete: { confirm: "You sure?" },
                     class: "btn btn-danger btn-sm rounded-0",
