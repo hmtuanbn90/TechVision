@@ -8,8 +8,8 @@
                <%= link_to image_tag(review_news.image, class: "post-img"),review_path(review_news) if review_news.image.attached? %>
               <div class="post-body">
                 <div class="post-meta">
-                  <%=link_to review_news.topic.name, "#", class: "post-category cat-#{review_news.topic.id}" %>
-                  <span class="post-date tt-review" ><%=review_news.created_at%></span>
+                  <%=link_to review_news.name, "#", class: "post-category cat-#{review_news.topic.id}" %>
+                  <span class="post-date tt-review" ><%=time_ago_in_words(review_news.created_at) %> <%= t("index.ago") %></span>
                 </div>
                 <h3 class="post-title tt-review">
                   <%=link_to review_news.title,review_path(review_news) %>
@@ -36,8 +36,8 @@
                 <%= link_to image_tag(recentPost.image, class: "post-img"),review_path(recentPost) if recentPost.image.attached? %>
                 <div class="post-body">
                   <div class="post-meta">
-                    <%= link_to recentPost.topic.name, "#", class: "post-category cat-1" %>
-                    <span class="post-date"><%= recentPost.created_at %></span>
+                    <%= link_to recentPost.name, "#", class: "post-category cat-1" %>
+                    <span class="post-date"><%= time_ago_in_words(recentPost.created_at) %> <%= t("index.ago") %></span>
                   </div>
                   <h3 class="post-title">
                     <%= link_to recentPost.title, review_path(recentPost) %>
@@ -51,8 +51,8 @@
                 <%= link_to image_tag(recentPost.image, class: "post-img"),review_path(recentPost) if recentPost.image.attached? %>
                 <div class="post-body">
                   <div class="post-meta">
-                    <a class="post-category cat-1" href="#"><%=recentPost.topic.name %></a>
-                    <span class="post-date"><%= recentPost.created_at %></span>
+                    <a class="post-category cat-1" href="#"><%=recentPost.name %></a>
+                    <span class="post-date"><%= time_ago_in_words(recentPost.created_at) %> <%= t("index.ago") %></span>
                   </div>
                   <h3 class="post-title">
                     <%= link_to recentPost.title, review_path(recentPost) %>
@@ -73,8 +73,8 @@
                       <%= link_to image_tag(recentPost.image, class: "post-img"),review_path(recentPost) if recentPost.image.attached? %>
                       <div class="post-body">
                         <div class="post-meta">
-                          <%= link_to recentPost.topic.name, "#", class: "post-category cat-#{recentPost.topic.id}" %>
-                          <span class="post-date tt-review"><%= recentPost.created_at %></span>
+                          <%= link_to recentPost.name, "#", class: "post-category cat-#{recentPost.topic.id}" %>
+                          <span class="post-date tt-review"><%= time_ago_in_words(recentPost.created_at) %><%= t("index.ago") %></span>
                         </div>
                         <h3 class="post-title tt-review">
                           <%= link_to recentPost.title, review_path(recentPost) %>
@@ -86,8 +86,8 @@
             <div class="clearfix visible-md visible-lg"></div>
           <% elsif dem == 10 %>
           <% end %>
-        <%end%>
-      <%end%>
+        <% end %>
+      <% end %>
       </div>
       </div>
       <div class="col-md-4">
