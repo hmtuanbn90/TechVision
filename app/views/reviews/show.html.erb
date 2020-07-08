@@ -1,11 +1,13 @@
 <div id="post-header" class="page-header">
-  <div class="background-img" style="background-image: url('/assets/about-1.jpg')";></div>
+  <div class="background-img" style="background-image: url('/assets/TechVision1.jpg')";></div>
   <div class="container">
     <div class="row">
       <div class="col-md-10">
         <div class="post-meta">
           <%=link_to @review.name, "#", class: "post-category cat-2" %>
-          <span class="post-date"><%= time_ago_in_words(@review.created_at) %> <%= t("index.ago")%></span>
+          <span class="post-date">
+            <%= time_ago_in_words(@review.created_at) %> <%= t("index.ago")%>
+          </span>
         </div>
         <h1><%= @review.title.html_safe %></h1>
       </div>
@@ -16,80 +18,89 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <div class="col-md-12">
-            <div class="col-md-10">
-              <% if logged_in? %>
-                <% if @bookmarked.nil? %>
-                  <div id="bookmark_form">
-                    <%= render "reviews/bookmark_form" %></div>
-                  <% else %>
-                  <div id="bookmarked_form">
-                    <%= render "reviews/bookmarked_form" %></div>
-                <% end %>
-
-              <% end %>
-            </div>
-            <div class="col-md-2">
-              <% if logged_in? %>
-                <% if @reported.nil? %>
-                <div>
-                  <%= render "reviews/report_form" %></div>
-                <% else %>
-                <div>
-                  <%= render "reviews/reported_form" %></div>
-                <% end %>
-              <% end %>
-            </div>
-          <div class="section-row sticky-container col-md-12">
-            <div class="main-post">
-              <figure class="figure-img">
-                <%= image_tag @review.image,
-                 class: "img-responsive" if @review.image.attached? %>
-              </figure>
-              <%= @review.content.html_safe %>
-            </div><br>
-              <div class="like_share">
-              <div id = "like_count" class="col-md-10">
-                <%= @review.likes.count %>
-                <%= (@review.likes.count) == 1 ? t("index.like") : t("index.likes") %>
-              </div>
-                <div
-                  class="fb-share-button col-md-2"
-                  data-href="<%= review_url(@review.id) %>"
-                  data-layout="box_count" data-size="small">
-                  <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Freviews%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
-                </div>
-              </div>
-              <% if logged_in? %>
-                <section class="stats">
-                  <span>
-                    <div id = "form_like"><%= render 'form_like' %></div> <br>
-                  </span>
-                    <div>
-                      <% if @review.user_id == current_user.id %>
-                        <div  class="col-md-10">
-                          <%= link_to (t ".Edit Review"), edit_review_path(@review),
-                                        class: "btn btn-primary css-edit" %><br>
-                        </div>
-                      <% end %>
-                    </div>
-                <% end %><br><br>
-
-                <div>
-                  <%= render "form_comments1" %>
-                </div>
-              </section>
-              <div class="aside-widget">
-                <div class="tags-widget">
-                  <ul>
-                    <% if !@hashtags.empty? %>
-                      <% @hashtags.each do |hashtag| %>
-                        <li><%=link_to hashtag.name, hashtag_path(hashtag) %></li>
-                      <% end %>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-10">
+                  <% if logged_in? %>
+                    <% if @bookmarked.nil? %>
+                      <div id="bookmark_form">
+                        <%= render "reviews/bookmark_form" %>
+                      </div>
+                    <% else %>
+                      <div id="bookmarked_form">
+                        <%= render "reviews/bookmarked_form" %>
+                      </div>
                     <% end %>
-                  </ul>
+                  <% end %>
+                </div>
+              <div class="col-md-2">
+                <% if logged_in? %>
+                  <% if @reported.nil? %>
+                    <div>
+                      <%= render "reviews/report_form" %>
+                    </div>
+                  <% else %>
+                    <div>
+                      <%= render "reviews/reported_form" %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="section-row sticky-container col-md-12">
+                <div class="main-post">
+                  <figure class="figure-img">
+                    <%= image_tag @review.image,
+                    class: "img-responsive" if @review.image.attached? %>
+                  </figure>
+                  <%= @review.content.html_safe %>
+                </div><br>
+                <div class="aside-widget">
+                  <div class="tags-widget">
+                    <ul>
+                      <% if !@hashtags.empty? %>
+                        <% @hashtags.each do |hashtag| %>
+                          <li><%=link_to hashtag.name, hashtag_path(hashtag) %></li>
+                        <% end %>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+                <div class="like_share">
+                  <div id = "like_count" class="col-md-10">
+                    <%= @review.likes.count %>
+                    <%= (@review.likes.count) == 1 ? t("index.like") : t("index.likes") %>
+                  </div>
+                  <div
+                    class="fb-share-button col-md-2"
+                    data-href="<%= review_url(@review.id) %>"
+                    data-layout="box_count" data-size="small">
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Freviews%2F&amp;src=sdkpreparse"
+                    class="fb-xfbml-parse-ignore">Share</a>
+                  </div>
+                  </div>
+                  <% if logged_in? %>
+                    <section class="stats">
+                      <span>
+                        <div id = "form_like"><%= render 'form_like' %></div> <br>
+                      </span>
+                      <div>
+                        <% if @review.user_id == current_user.id %>
+                          <div  class="col-md-10">
+                            <%= link_to (t ".Edit Review"), edit_review_path(@review),
+                                        class: "btn btn-primary css-edit" %><br>
+                          </div>
+                        <% end %>
+                      </div>
+                    </section>
+                  <% end %><br><br>
+                  <div>
+                    <%= render "form_comments1" %>
+                  </div>
+
                 </div>
               </div>
+            </div>
           </div>
         </div>
         <div class="col-md-4">
