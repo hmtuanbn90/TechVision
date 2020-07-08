@@ -5,7 +5,7 @@ class Bookmark < ApplicationRecord
   validates :user_id, presence: true
   scope :bookmarked, -> (review_id, user_id){where("review_id = ? AND user_id = ?", review_id, user_id)}
 
-    def self.to_csv
+  def self.to_csv
     CSV.generate(headers: true) do |csv|
       csv << %w{ review_id review_title poster bookmarker}
       Bookmark.all.each do |bookmark|

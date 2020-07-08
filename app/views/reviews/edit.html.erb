@@ -12,11 +12,11 @@
 <% end %>
 
 <%= form_for @review do |f| %>
-  <div class="form-group">
+  <div class="form-group css-edit">
     <label><%= t("index.tagsInput") %></label>
     <input type="text" id="autocomplete" class="form-control" />
     <%= link_to_add_fields t("index.Add"), f, :hashtag_details %>
-    <ul id="hashtag_name_ul">  
+    <ul id="hashtag_name_ul">
     </ul>
   </div>
     <%= f.fields_for :hashtag_details, @review.hashtag_details do |hashtag_detail| %>
@@ -56,7 +56,7 @@
   </div>
 </div>
 <script>
-       
+
 $('#autocomplete').autocomplete({
   source: function (request, response) {
     $.ajax({
@@ -72,7 +72,7 @@ $('#autocomplete').autocomplete({
   },
   select: function(event, ui) {
     // $("#hashtag_name_ul").append("<li>"+ ui.item.value + "<input type = 'hidden' name='review[hashtag_ids][]' value='" + ui.item.data + "'></li>");
-     // $("#theHidden").val(ui.item.id) 
+     // $("#theHidden").val(ui.item.id)
     var id = $('.add_fields').data('id');
     var new_id = new Date().getTime();
     var field = $('.add_fields').data('fields').replace(new RegExp(id, 'gi'), new_id);
@@ -98,7 +98,7 @@ $('#autocomplete').autocomplete({
       $('#' + idHidden).parent().find('span').html(nameHashtag);
       $('#' + idText).remove();
     }else{alert('<%= t("index.hashtager") %>');}
-  }    
+  }
 });
  $('form').on('click', '.remove_hashtag', function(event) {
   //$(this).append('<input id="_destroy" name="review[" type="hidden" />')
