@@ -18,6 +18,12 @@ $(document).on('click', '.add_fields', function(){
 	  check = false;
 	  }
 	});
+  $('div[class="form-field "]').each(function(){
+      var label = $(this).find('label').text();
+      if (label == nameHashtag) {
+        check = false;
+      }
+    });
   if(check){
 	$('#hashtag_name_ul').append(field);
 	$('#' + idText).val(nameHashtag);

@@ -66,12 +66,12 @@ import 'regenerator-runtime/runtime'
       }
     }
   });
-
+$( document ).ready(function() {
   $('.nav-aside-close').on('click', function () {
     $('#nav-aside').removeClass('active');
     $('#nav').removeClass('shadow-active');
   });
-
+});
   // Sticky Shares
   var $shares = $('.sticky-container .sticky-shares'),
   $sharesHeight = $shares.height(),
